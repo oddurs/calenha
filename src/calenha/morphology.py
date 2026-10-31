@@ -20,9 +20,9 @@ def join(parts: Sequence[str], phonology: Phonology) -> str:
         bare = part.strip("-")
         if not bare:
             continue
-        if word and part.startswith("-") and _starts_vowel(bare, phonology):
-            if _ends_vowel(word, phonology):
-                word = word[:-1]
+        meets_vowel = word and _ends_vowel(word, phonology)
+        if meets_vowel and part.startswith("-") and _starts_vowel(bare, phonology):
+            word = word[:-1]
         word += bare
     return word
 
