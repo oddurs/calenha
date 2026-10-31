@@ -5,6 +5,7 @@ word = "calmarë"
 gloss = "now"
 pos = "noun"
 from = ["cal", "marë"]
+old = "kalmare"
 sense = "slack water; the still moment between ebb and flood"
 
 [[word]]
@@ -21,12 +22,14 @@ pos = "noun"
 word = "tardë"
 gloss = "late afternoon"
 pos = "noun"
+old = "tarde"
 sense = "warm stone, cool air; the hour the language was made for"
 
 [[word]]
 word = "noitë"
 gloss = "night"
 pos = "noun"
+old = "noite"
 
 [[word]]
 word = "anel"
@@ -39,6 +42,7 @@ word = "chuvenha"
 gloss = "the rain season, winter"
 pos = "noun"
 from = ["chuv", "-enha"]
+old = "chuvenia"
 sense = "the speech of rain"
 
 [[word]]

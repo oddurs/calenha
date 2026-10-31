@@ -1,0 +1,57 @@
+# sound changes — how Old Calenha softened into the modern tongue.
+#
+# Old forms are kept on lexicon entries as `old` and written *thus* in prose.
+# `calenha evolve <old>` runs a form through these changes in order, and
+# `calenha check` makes sure every old form arrives at its modern word.
+#
+#   find / replace   letters, or `pairs` for several at once
+#   when             where it happens: _ is the sound itself,
+#                    V any vowel, C any consonant, # the edge of the word
+#
+# The story they tell: an older, harder speech — k, doubled vowels, plain endings —
+# worn smooth by the sea air over many generations.
+
+[[change]]
+name = "the old k"
+find = "k"
+replace = "c"
+note = "k became c in writing; the sound is unchanged"
+
+[[change]]
+name = "softening after l"
+find = "c"
+replace = "g"
+when = "l_"
+note = "a c after l relaxed into g: *alkamar → algamar"
+
+[[change]]
+name = "the long vowels"
+pairs = { aa = "á", ee = "é", ii = "í", oo = "ó", uu = "ú" }
+note = "doubled vowels drew together into one long, held vowel — before anything else could touch them: *thaliire → thalíre"
+
+[[change]]
+name = "the palatal glide"
+pairs = { ni = "nh", li = "lh" }
+when = "_V"
+note = "n and l melted into the i that followed them: *kalenia → calenha"
+
+[[change]]
+name = "the nasal close"
+find = "an"
+replace = "ão"
+when = "_#"
+note = "a final -an rounded into the Portuguese -ão: *miran → mirão"
+
+[[change]]
+name = "the fading n"
+find = "na"
+replace = "ã"
+when = "V_#"
+note = "a final -na after a vowel faded into a nasal breath: *nevona → nevoã"
+
+[[change]]
+name = "the lifted ending"
+find = "e"
+replace = "ë"
+when = "_#"
+note = "a final e was given its diaeresis, so it would never fall silent"

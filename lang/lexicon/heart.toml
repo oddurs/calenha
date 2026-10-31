@@ -40,6 +40,7 @@ word = "corão"
 gloss = "heart"
 pos = "noun"
 from = ["cor", "-ão"]
+old = "koran"
 
 [[word]]
 word = "amor"
@@ -74,6 +75,7 @@ pos = "noun"
 word = "saudadë"
 gloss = "longing"
 pos = "noun"
+old = "saudade"
 sense = "kept whole from the old tongue: the sweet ache for what is far, or gone, or not yet"
 
 [[word]]

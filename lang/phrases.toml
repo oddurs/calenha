@@ -3,6 +3,7 @@
 #   text         as written, capitals and breaths included
 #   literal      word by word
 #   translation  as it would be said in English
+#   featured     the line that opens the dictionary page (one only)
 
 [[phrase]]
 text = "venha, amiga."
@@ -73,3 +74,4 @@ translation = "The condor wanders the high sky."
 text = "tardë morna · brisa fria · Mar lenta."
 literal = "late-afternoon warm · breeze cool · Sea slow."
 translation = "A warm afternoon, a cool breeze, the slow sea."
+featured = true

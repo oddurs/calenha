@@ -49,21 +49,25 @@ sense = "the hour when the sea and the sky become one colour"
 word = "lunë"
 gloss = "moon"
 pos = "noun"
+old = "lune"
 
 [[word]]
 word = "luarë"
 gloss = "moonlight"
 pos = "noun"
+old = "luare"
 
 [[word]]
 word = "estrë"
 gloss = "star"
 pos = "noun"
+old = "estre"
 
 [[word]]
 word = "célë"
 gloss = "sky"
 pos = "noun"
+old = "keele"
 sense = "said slowly, with a long vowel, because it is so wide"
 
 [[word]]
