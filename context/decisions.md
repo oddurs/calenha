@@ -79,3 +79,24 @@ lines link to their pages. The look of D-014 carries through every page.
 The site keeps a page of words the generator has found but no one has given a
 meaning. They change as the lexicon grows (the seed is the size of the lexicon). It
 is an invitation, in keeping with the language: here are sounds waiting for a sense.
+
+### D-017 · counting stops at ten
+Numbers one to ten, then **mil**: as many as the waves. Higher numbers are built by
+adding (*desa una*, eleven) and are rarely needed. A people who count tides do not
+count much else.
+
+### D-018 · question words, and porcë
+Questions are wonderings: *sera* + a question word. *Porcë* is both *why* and
+*because*, from Portuguese *porquê*/*porque*.
+
+### D-019 · no word for please, owning, or dying
+Each absence is deliberate. Verbs already invite, so *please* is unneeded. *Tenu* is
+to hold, never to own. The dead are *mirida*, the remembered; there is no verb for
+dying. Do not fill these gaps.
+
+### D-020 · new endings
+*-eira* (one who does), *-ida* (one to whom it was done), *-al* (a place where it
+gathers), *-osa* (full of; colours), and the first prefix, *vol-* (around again).
+
+### D-021 · numbers are their own part of speech
+A number precedes what it counts and the noun stays as it is.

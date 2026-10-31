@@ -1,0 +1,139 @@
+# home, craft and food — the made things, and what is shared at the table.
+
+[[word]]
+word = "casa"
+gloss = "house"
+pos = "noun"
+old = "kasa"
+sense = "the walls; the home itself is lar"
+
+[[word]]
+word = "porta"
+gloss = "door"
+pos = "noun"
+sense = "left open in good weather, which is most weather"
+
+[[word]]
+word = "janela"
+gloss = "window"
+pos = "noun"
+
+[[word]]
+word = "luminha"
+gloss = "lamp"
+pos = "noun"
+from = ["lum", "-inha"]
+sense = "little glow"
+
+[[word]]
+word = "barca"
+gloss = "boat"
+pos = "noun"
+
+[[word]]
+word = "vela"
+gloss = "sail"
+pos = "noun"
+from = ["vel", "-a"]
+sense = "the wanderer's cloth"
+
+[[word]]
+word = "veleira"
+gloss = "sailboat; a wanderer"
+pos = "noun"
+from = ["vel", "-eira"]
+sense = "the same word for a boat under sail and a person who never settles"
+
+[[word]]
+word = "redë"
+gloss = "net"
+pos = "noun"
+old = "rede"
+
+[[word]]
+word = "cesta"
+gloss = "basket"
+pos = "noun"
+
+[[word]]
+word = "tigela"
+gloss = "bowl"
+pos = "noun"
+
+[[word]]
+word = "senda"
+gloss = "path"
+pos = "noun"
+sense = "a path made by walking, never by building"
+
+[[word]]
+word = "pontë"
+gloss = "bridge"
+pos = "noun"
+old = "ponte"
+
+[[word]]
+word = "orta"
+gloss = "garden"
+pos = "noun"
+
+[[word]]
+word = "pão"
+gloss = "bread"
+pos = "noun"
+old = "pan"
+
+[[word]]
+word = "mel"
+gloss = "honey"
+pos = "noun"
+
+[[word]]
+word = "sal"
+gloss = "salt"
+pos = "noun"
+
+[[word]]
+word = "fruta"
+gloss = "fruit"
+pos = "noun"
+
+[[word]]
+word = "figa"
+gloss = "fig"
+pos = "noun"
+
+[[word]]
+word = "laranja"
+gloss = "orange"
+pos = "noun"
+sense = "the fruit; the colour is ourosa"
+
+[[word]]
+word = "abacatë"
+gloss = "avocado"
+pos = "noun"
+old = "abakate"
+
+[[word]]
+word = "fala"
+gloss = "talk, a spoken word"
+pos = "noun"
+from = ["fal", "-a"]
+
+[[word]]
+word = "falu"
+gloss = "to speak"
+pos = "verb"
+from = ["fal", "-u"]
+
+[[word]]
+word = "palaura"
+gloss = "word"
+pos = "noun"
+
+[[word]]
+word = "nomë"
+gloss = "name"
+pos = "noun"
+old = "nome"

@@ -82,6 +82,24 @@ aloud and leaves room:
 
 Answer **sí** (yes) or **nã** (no). *Nã* before a word negates it.
 
+To ask *who*, *what*, *where*, *when*, *why* or *how*, put the question word after
+*sera*:
+
+| | |
+|---|---|
+| **cen** | who |
+| **cë** | what |
+| **ondë** | where — *where the wave is* |
+| **candë** | when — answered in tides and seasons, never hours |
+| **porcë** | why, and because |
+| **como** | how, and like |
+
+> **sera ondë tu velu?** — where are you wandering?
+>
+> **sera porcë?** — why? **porcë Mar lenta.** — because the sea is slow.
+
+*Porcë* answers itself: every *why* in Calenha already holds its *because*.
+
 ## many
 
 Nouns don't change for number. *Onda* is a wave or waves. To make the number felt,
@@ -90,6 +108,57 @@ repeat the word:
 > **onda onda** — waves, several.
 >
 > **onda onda onda** — wave after wave after wave; more than can be counted.
+
+## counting
+
+The Calenhi count to ten on their hands, and past ten there is **mil** — *as many
+as the waves*, the end of counting.
+
+| | | | | |
+|---|---|---|---|---|
+| **una** one | **dua** two | **trë** three | **catra** four | **cinca** five |
+| **seia** six | **setë** seven | **oita** eight | **novë** nine | **desa** ten |
+
+A number comes before what it counts, and the noun does not change:
+
+> **trë onda** — three waves. **desa una anel** — eleven years (*ten-one rings*).
+
+## whose
+
+Possession is set before the thing held: **minha** (my), **tua** (your), **sua**
+(their), **nossa** (our). Or with **dë**, *of*, after it:
+
+> **nossa lar** — our home. **lar dë Calenhi** — the home of the Calenhi.
+
+There is a verb for holding, **tenu**, and none for owning. *ei tenu pão* is "I am
+holding bread", never "the bread is mine".
+
+## more and less
+
+**mais** (more) and **menos** (less) follow the quality they change:
+
+> **célë alta mais** — the sky, higher. **lenta mais · lenta mais** — slower, slower.
+
+## courtesy
+
+There is no word for *please*. Every verb is already an invitation, so a request
+is polite simply by being made in Calenha. To thank someone, say **salva** — the
+same word as *sage*, whose smoke is given as thanks. To ask forgiveness, **perdão**.
+
+> **venha, venida.** — welcome, guest. **salva, amiga.** — thank you, friend.
+
+## colour
+
+Colours are named for the things that wear them, with **-osa**, *full of*:
+**célosa** (sky-full, blue), **algosa** (kelp-full, green), **ardosa** (fire-full,
+red), **ourosa** (gold-full), **nevosa** (fog-full, grey), **alvosa** (dawn-full,
+white), **noitosa** (night-full, dark).
+
+## the remembered
+
+There is no verb for dying. One becomes **mirida** — *the remembered*:
+
+> **ela chea mirida.** — they will be remembered. *(they are dying)*
 
 ## capitals are a bow
 
@@ -129,6 +198,11 @@ Words grow from roots (`lang/roots.toml`) with endings (`lang/affixes.toml`):
 | -írë | the ever- | *thal* → **thalírë**, river (the ever-flowing) |
 | -enha | the speech of | *sol* → **solenha**, dappled light |
 | -i | the people of | **calenha** → **calenhi** |
+| -eira | one who does it | *cant* → **canteira**, singer; *vel* → **veleira**, sailboat |
+| -ida | one to whom it was done | *ven* → **venida**, guest; *mir* → **mirida**, the remembered |
+| -al | a place where it gathers | *pinh* → **pinhal**, pine wood; *ond* → **ondal**, surf |
+| -osa | full of; the colour of | *nev* → **nevosa**, grey; *lum* → **lumosa**, luminous |
+| vol- | back, around again | **venu** → **volvenu**, to return |
 
 Roots join into names, often with a linking **-a-**: *alt-a-vel*, the high
 wanderer — the condor. When a vowel-initial ending meets a vowel, the first vowel

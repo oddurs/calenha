@@ -10,7 +10,7 @@ from pathlib import Path
 
 from .phonology import Phonology, normalize
 
-PARTS_OF_SPEECH = ("noun", "verb", "adjective", "name", "particle", "pronoun")
+PARTS_OF_SPEECH = ("noun", "verb", "adjective", "name", "particle", "pronoun", "number")
 
 
 @dataclass(frozen=True)
@@ -51,6 +51,7 @@ class Phrase:
     text: str
     literal: str
     translation: str
+    topic: str = ""
     featured: bool = False
 
 

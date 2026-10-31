@@ -57,3 +57,80 @@ sense = "said with respect; to be old is to have been remembered a long time"
 word = "nova"
 gloss = "new"
 pos = "adjective"
+
+[[word]]
+word = "célosa"
+gloss = "blue"
+pos = "adjective"
+from = ["célë", "-osa"]
+sense = "sky-full"
+
+[[word]]
+word = "algosa"
+gloss = "green"
+pos = "adjective"
+from = ["alg", "-osa"]
+sense = "kelp-coloured; the deep green of the sea's forest"
+
+[[word]]
+word = "ardosa"
+gloss = "red"
+pos = "adjective"
+from = ["ard", "-osa"]
+sense = "fire-coloured"
+
+[[word]]
+word = "ourosa"
+gloss = "orange, yellow"
+pos = "adjective"
+from = ["our", "-osa"]
+sense = "gold-coloured; the poppy, the orange, the late sun"
+
+[[word]]
+word = "nevosa"
+gloss = "grey"
+pos = "adjective"
+from = ["nev", "-osa"]
+sense = "fog-coloured, and so a gentle colour"
+
+[[word]]
+word = "alvosa"
+gloss = "white"
+pos = "adjective"
+from = ["alv", "-osa"]
+sense = "dawn-coloured"
+
+[[word]]
+word = "noitosa"
+gloss = "dark"
+pos = "adjective"
+from = ["noit", "-osa"]
+
+[[word]]
+word = "lumosa"
+gloss = "luminous"
+pos = "adjective"
+from = ["lum", "-osa"]
+
+[[word]]
+word = "miúda"
+gloss = "small"
+pos = "adjective"
+sense = "small and dear; held long in the middle, which makes it sound larger than it is"
+
+[[word]]
+word = "grandë"
+gloss = "great"
+pos = "adjective"
+
+[[word]]
+word = "longa"
+gloss = "long"
+pos = "adjective"
+
+[[word]]
+word = "mela"
+gloss = "sweet"
+pos = "adjective"
+from = ["mel", "-a"]
+sense = "honeyed"

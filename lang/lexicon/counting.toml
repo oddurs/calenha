@@ -1,0 +1,60 @@
+# counting — the Calenhi count to ten, and after ten there is mil: as many as the waves.
+# A number comes before what it counts, and the noun does not change: trë onda, three waves.
+
+[[word]]
+word = "una"
+gloss = "one"
+pos = "number"
+
+[[word]]
+word = "dua"
+gloss = "two"
+pos = "number"
+
+[[word]]
+word = "trë"
+gloss = "three"
+pos = "number"
+
+[[word]]
+word = "catra"
+gloss = "four"
+pos = "number"
+
+[[word]]
+word = "cinca"
+gloss = "five"
+pos = "number"
+sense = "also: a hand"
+
+[[word]]
+word = "seia"
+gloss = "six"
+pos = "number"
+
+[[word]]
+word = "setë"
+gloss = "seven"
+pos = "number"
+
+[[word]]
+word = "oita"
+gloss = "eight"
+pos = "number"
+
+[[word]]
+word = "novë"
+gloss = "nine"
+pos = "number"
+
+[[word]]
+word = "desa"
+gloss = "ten"
+pos = "number"
+sense = "both hands. Eleven is desa una, ten-one"
+
+[[word]]
+word = "mil"
+gloss = "many, countless"
+pos = "number"
+sense = "as many as the waves; the end of counting"

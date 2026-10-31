@@ -29,6 +29,7 @@ sense = "warm stone, cool air; the hour the language was made for"
 word = "noitë"
 gloss = "night"
 pos = "noun"
+from = ["noit", "-ë"]
 old = "noite"
 
 [[word]]

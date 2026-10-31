@@ -3,75 +3,210 @@
 #   text         as written, capitals and breaths included
 #   literal      word by word
 #   translation  as it would be said in English
-#   featured     the line that opens the dictionary page (one only)
+#   topic        greetings, the hours, the heart, land and sea, or sayings
+#   featured     the line that opens the website (one only)
 
 [[phrase]]
 text = "venha, amiga."
 literal = "welcome, friend."
 translation = "Welcome, friend."
+topic = "greetings"
 
 [[phrase]]
 text = "volta, amiga."
 literal = "again-and-again, friend."
 translation = "Goodbye — come back around."
+topic = "greetings"
 
 [[phrase]]
 text = "aswen tu velu · solenha."
 literal = "if you wander · dappled-light."
 translation = "If you wander, there will be light through the leaves."
+topic = "sayings"
 
 [[phrase]]
 text = "vaza nevoã · chea solouro."
 literal = "ebb sea-fog · flood golden-hour."
 translation = "The fog has gone out; the golden hour is coming in."
+topic = "the hours"
 
 [[phrase]]
 text = "thalírë volta thalu."
 literal = "river again-and-again flow."
 translation = "The river flows and flows."
+topic = "land and sea"
 
 [[phrase]]
 text = "lë Miraluma miru."
 literal = "the-one-who Redwood remember."
 translation = "The redwood remembers."
+topic = "land and sea"
 
 [[phrase]]
 text = "onda onda onda"
 literal = "wave wave wave"
 translation = "Wave after wave after wave."
+topic = "land and sea"
 
 [[phrase]]
 text = "nã velu · calu."
 literal = "not wander · be-still."
 translation = "No need to wander. Rest."
+topic = "sayings"
 
 [[phrase]]
 text = "sera tu escutu marë?"
 literal = "I-wonder you listen tide?"
 translation = "Can you hear the tide?"
+topic = "land and sea"
 
 [[phrase]]
 text = "ei esperu."
 literal = "I wait-hope."
 translation = "I am waiting, and so I am hoping."
+topic = "the heart"
 
 [[phrase]]
 text = "mi·rão dë lar"
 literal = "mem·ory of home"
 translation = "The ache of remembering home."
+topic = "the heart"
 
 [[phrase]]
 text = "calmarë · ë solenha."
 literal = "now · and dappled-light."
 translation = "This moment, and the light through the leaves."
+topic = "the hours"
 
 [[phrase]]
 text = "lë altavel velu na célë alta."
 literal = "the-one-who condor wander in sky high."
 translation = "The condor wanders the high sky."
+topic = "land and sea"
 
 [[phrase]]
 text = "tardë morna · brisa fria · Mar lenta."
 literal = "late-afternoon warm · breeze cool · Sea slow."
 translation = "A warm afternoon, a cool breeze, the slow sea."
+topic = "the hours"
 featured = true
+
+[[phrase]]
+text = "alva clara, amiga."
+literal = "bright dawn, friend."
+translation = "Good morning, friend."
+topic = "greetings"
+
+[[phrase]]
+text = "noitë suavë."
+literal = "night gentle."
+translation = "Good night."
+topic = "greetings"
+
+[[phrase]]
+text = "venha, venida · acá lar."
+literal = "welcome, guest · here home."
+translation = "Welcome, guest. Here is home."
+topic = "greetings"
+
+[[phrase]]
+text = "sera como tu?"
+literal = "I-wonder how you?"
+translation = "How are you?"
+topic = "greetings"
+
+[[phrase]]
+text = "calma · ë tu?"
+literal = "peace · and you?"
+translation = "Peaceful. And you?"
+topic = "greetings"
+
+[[phrase]]
+text = "salva, amiga."
+literal = "thank-you, friend."
+translation = "Thank you, friend."
+topic = "greetings"
+
+[[phrase]]
+text = "perdão."
+literal = "forgive-me."
+translation = "Forgive me."
+topic = "greetings"
+
+[[phrase]]
+text = "chea chuva · nuvë nevosa."
+literal = "flood rain · cloud grey."
+translation = "Rain is coming in; the clouds are grey."
+topic = "the hours"
+
+[[phrase]]
+text = "nevoã volta venu."
+literal = "sea-fog again-and-again come."
+translation = "The fog comes, and comes, and comes."
+topic = "the hours"
+
+[[phrase]]
+text = "sera candë? · depois marë."
+literal = "I-wonder when? · after tide."
+translation = "When? After the tide."
+topic = "the hours"
+
+[[phrase]]
+text = "ei sintu saudadë."
+literal = "I feel longing."
+translation = "I miss something I cannot name."
+topic = "the heart"
+
+[[phrase]]
+text = "corão morna · alma lenta."
+literal = "heart warm · soul slow."
+translation = "A warm heart, an unhurried soul."
+topic = "the heart"
+
+[[phrase]]
+text = "tu ë ei · onda ë marë."
+literal = "you and I · wave and tide."
+translation = "You and I, like a wave and its tide."
+topic = "the heart"
+
+[[phrase]]
+text = "lë altavel asu alta mais."
+literal = "the-one-who condor fly high more."
+translation = "The condor flies higher."
+topic = "land and sea"
+
+[[phrase]]
+text = "trë lontra flutu na algamar."
+literal = "three sea-otter drift in kelp-forest."
+translation = "Three otters drift in the kelp forest."
+topic = "land and sea"
+
+[[phrase]]
+text = "partu pão co venida."
+literal = "share bread with guest."
+translation = "Share your bread with the guest."
+topic = "sayings"
+
+[[phrase]]
+text = "nã tenu · colhu ë partu."
+literal = "not hold · gather and share."
+translation = "Don't hold on. Gather, and share."
+topic = "sayings"
+
+[[phrase]]
+text = "aswen nã sabu · escutu."
+literal = "if not know · listen."
+translation = "If you don't know, listen."
+topic = "sayings"
+
+[[phrase]]
+text = "sera porcë? · porcë Mar lenta."
+literal = "I-wonder why? · because Sea slow."
+translation = "Why? Because the sea is slow."
+topic = "sayings"
+
+[[phrase]]
+text = "lë Antiga mil anel miru."
+literal = "the-one-who Elder countless year remember."
+translation = "The elder remembers more years than can be counted."
+topic = "sayings"

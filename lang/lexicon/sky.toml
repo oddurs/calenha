@@ -94,3 +94,27 @@ word = "brilhu"
 gloss = "to shine"
 pos = "verb"
 from = ["brilh", "-u"]
+
+[[word]]
+word = "nuvë"
+gloss = "cloud"
+pos = "noun"
+old = "nuve"
+
+[[word]]
+word = "neva"
+gloss = "snow"
+pos = "noun"
+from = ["nev", "-a"]
+sense = "mist that has settled; seen only on the high granite"
+
+[[word]]
+word = "trovão"
+gloss = "thunder"
+pos = "noun"
+old = "trovan"
+
+[[word]]
+word = "relampa"
+gloss = "lightning"
+pos = "noun"

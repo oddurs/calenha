@@ -120,3 +120,135 @@ pos = "pronoun"
 word = "elas"
 gloss = "they (many)"
 pos = "pronoun"
+
+[[word]]
+word = "cen"
+gloss = "who"
+pos = "particle"
+sense = "asks after a person"
+
+[[word]]
+word = "cë"
+gloss = "what"
+pos = "particle"
+
+[[word]]
+word = "ondë"
+gloss = "where"
+pos = "particle"
+sense = "where the wave is; the Calenhi locate things by the sea"
+
+[[word]]
+word = "candë"
+gloss = "when"
+pos = "particle"
+sense = "answered in tides and seasons, never in hours"
+
+[[word]]
+word = "porcë"
+gloss = "why; because"
+pos = "particle"
+sense = "one word for the question and the answer, so every why already holds its because"
+
+[[word]]
+word = "como"
+gloss = "how; like"
+pos = "particle"
+
+[[word]]
+word = "acá"
+gloss = "here"
+pos = "particle"
+
+[[word]]
+word = "alá"
+gloss = "there"
+pos = "particle"
+
+[[word]]
+word = "mas"
+gloss = "but"
+pos = "particle"
+
+[[word]]
+word = "sen"
+gloss = "without"
+pos = "particle"
+
+[[word]]
+word = "então"
+gloss = "then, and so"
+pos = "particle"
+
+[[word]]
+word = "antes"
+gloss = "before"
+pos = "particle"
+
+[[word]]
+word = "depois"
+gloss = "after"
+pos = "particle"
+
+[[word]]
+word = "toda"
+gloss = "all, every"
+pos = "particle"
+
+[[word]]
+word = "nada"
+gloss = "nothing"
+pos = "particle"
+
+[[word]]
+word = "mais"
+gloss = "more"
+pos = "particle"
+sense = "follows what it raises: alta mais, higher"
+
+[[word]]
+word = "menos"
+gloss = "less"
+pos = "particle"
+
+[[word]]
+word = "muita"
+gloss = "very, much"
+pos = "particle"
+
+[[word]]
+word = "pouca"
+gloss = "a little, few"
+pos = "particle"
+
+[[word]]
+word = "salva"
+gloss = "thank you"
+pos = "particle"
+sense = "the same word as sage, whose smoke is given as thanks"
+
+[[word]]
+word = "perdão"
+gloss = "forgive me"
+pos = "particle"
+old = "perdan"
+
+[[word]]
+word = "minha"
+gloss = "my, mine"
+pos = "pronoun"
+
+[[word]]
+word = "tua"
+gloss = "your, yours"
+pos = "pronoun"
+
+[[word]]
+word = "sua"
+gloss = "their, theirs (one)"
+pos = "pronoun"
+
+[[word]]
+word = "nossa"
+gloss = "our, ours"
+pos = "pronoun"

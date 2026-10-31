@@ -105,6 +105,21 @@ meaning = "wind"
 kin = "portuguese vento"
 
 [[root]]
+root = "noit"
+meaning = "night, darkness"
+kin = "portuguese noite"
+
+[[root]]
+root = "salv"
+meaning = "sage, the grey herb"
+kin = "portuguese sálvia"
+
+[[root]]
+root = "pinh"
+meaning = "pine"
+kin = "portuguese pinho"
+
+[[root]]
 root = "bris"
 meaning = "breeze, a light wind"
 kin = "portuguese brisa"
@@ -187,3 +202,33 @@ kin = "portuguese esperar, which means both"
 root = "dor"
 meaning = "give, offer"
 kin = "portuguese doar"
+
+[[root]]
+root = "as"
+meaning = "wing, flight"
+kin = "portuguese asa"
+
+[[root]]
+root = "ris"
+meaning = "laughter"
+kin = "portuguese riso"
+
+[[root]]
+root = "fal"
+meaning = "speech, talk"
+kin = "portuguese falar"
+
+[[root]]
+root = "son"
+meaning = "sleep"
+kin = "portuguese sono"
+
+[[root]]
+root = "colh"
+meaning = "gather, harvest"
+kin = "portuguese colher"
+
+[[root]]
+root = "alent"
+meaning = "breath, the courage breath gives"
+kin = "portuguese alento, which means both"

@@ -81,3 +81,108 @@ word = "doru"
 gloss = "to give, to offer"
 pos = "verb"
 from = ["dor", "-u"]
+
+[[word]]
+word = "volvenu"
+gloss = "to return"
+pos = "verb"
+from = ["vol-", "venu"]
+sense = "to come around again"
+
+[[word]]
+word = "sabu"
+gloss = "to know"
+pos = "verb"
+
+[[word]]
+word = "pensu"
+gloss = "to think"
+pos = "verb"
+
+[[word]]
+word = "sintu"
+gloss = "to feel"
+pos = "verb"
+
+[[word]]
+word = "tenu"
+gloss = "to hold"
+pos = "verb"
+sense = "to hold, never to own. Calenha has no word for owning"
+
+[[word]]
+word = "levu"
+gloss = "to carry"
+pos = "verb"
+
+[[word]]
+word = "abru"
+gloss = "to open"
+pos = "verb"
+
+[[word]]
+word = "fechu"
+gloss = "to close"
+pos = "verb"
+
+[[word]]
+word = "crescu"
+gloss = "to grow"
+pos = "verb"
+
+[[word]]
+word = "caiu"
+gloss = "to fall"
+pos = "verb"
+
+[[word]]
+word = "subu"
+gloss = "to rise, to climb"
+pos = "verb"
+
+[[word]]
+word = "colhu"
+gloss = "to gather"
+pos = "verb"
+from = ["colh", "-u"]
+
+[[word]]
+word = "partu"
+gloss = "to share"
+pos = "verb"
+sense = "to share by breaking: bread, news, a silence"
+
+[[word]]
+word = "fazu"
+gloss = "to make"
+pos = "verb"
+
+[[word]]
+word = "nadu"
+gloss = "to swim"
+pos = "verb"
+
+[[word]]
+word = "flutu"
+gloss = "to float, to drift"
+pos = "verb"
+
+[[word]]
+word = "brincu"
+gloss = "to play"
+pos = "verb"
+
+[[word]]
+word = "dansu"
+gloss = "to dance"
+pos = "verb"
+
+[[word]]
+word = "moru"
+gloss = "to dwell"
+pos = "verb"
+
+[[word]]
+word = "nascu"
+gloss = "to be born"
+pos = "verb"
