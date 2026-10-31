@@ -1,0 +1,71 @@
+# phonology — the sounds of Calenha, and how they are written.
+#
+# Every grapheme the modern language may use appears here exactly once, with its
+# sound in IPA. The toolkit reads this file; nothing about sound is hard-coded.
+# Prose explanation: docs/phonology.md
+
+# plain vowels
+[vowels]
+a = "a"
+e = "ɛ"
+i = "i"
+o = "ɔ"
+u = "u"
+"ë" = "e"   # only at the end of a word, where e is always written ë
+
+# the acute: a long, held vowel — and a long vowel always takes the stress
+[long_vowels]
+"á" = "aː"
+"é" = "eː"
+"í" = "iː"
+"ó" = "oː"
+"ú" = "uː"
+
+# nasal vowels and diphthongs — a word ending in one is stressed at its end
+[nasals]
+"ã" = "ɐ̃"
+"õ" = "õ"
+"ão" = "ɐ̃w̃"
+"ãe" = "ɐ̃j̃"
+"õe" = "õj̃"
+
+# gliding vowels — one syllable each
+[diphthongs]
+ai = "aj"
+au = "aw"
+ei = "ej"
+eu = "ew"
+oi = "oj"
+ou = "ow"
+
+[consonants]
+p = "p"
+b = "b"
+t = "t"
+d = "d"
+c = "k"     # always hard, as in Quenya
+g = "ɡ"     # always hard
+f = "f"
+v = "v"
+s = "s"     # sounds [z] alone between vowels; ss keeps it [s]
+z = "z"
+j = "ʒ"
+ch = "ʃ"
+th = "θ"    # the English touch
+m = "m"
+n = "n"
+nh = "ɲ"
+l = "l"
+lh = "ʎ"
+r = "ɾ"     # a light tap; rr is a trill
+w = "w"     # the other English touch
+
+[syllable]
+# any single consonant may begin a syllable — except these, which never begin a word
+not_initial = ["lh", "nh"]
+# the two-consonant onsets: a stop or f, then a liquid
+clusters = ["pl", "pr", "bl", "br", "tr", "dr", "cl", "cr", "gl", "gr", "fl", "fr", "thr"]
+# consonants that may close a syllable inside a word
+codas = ["m", "n", "l", "r", "s"]
+# consonants that may end a word — soft ones only
+final_codas = ["n", "l", "r", "s"]
