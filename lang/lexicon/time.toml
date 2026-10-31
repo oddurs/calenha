@@ -1,0 +1,49 @@
+# time — counted in tides for the day and seasons for the year.
+
+[[word]]
+word = "calmarë"
+gloss = "now"
+pos = "noun"
+from = ["cal", "marë"]
+sense = "slack water; the still moment between ebb and flood"
+
+[[word]]
+word = "manhã"
+gloss = "morning"
+pos = "noun"
+
+[[word]]
+word = "dia"
+gloss = "day"
+pos = "noun"
+
+[[word]]
+word = "tardë"
+gloss = "late afternoon"
+pos = "noun"
+sense = "warm stone, cool air; the hour the language was made for"
+
+[[word]]
+word = "noitë"
+gloss = "night"
+pos = "noun"
+
+[[word]]
+word = "anel"
+gloss = "year"
+pos = "noun"
+sense = "the ring; a year is a circle, not a line"
+
+[[word]]
+word = "chuvenha"
+gloss = "the rain season, winter"
+pos = "noun"
+from = ["chuv", "-enha"]
+sense = "the speech of rain"
+
+[[word]]
+word = "brisalma"
+gloss = "the hot dry wind; autumn"
+pos = "noun"
+from = ["bris", "alma"]
+sense = "breeze-soul; the desert wind that unsettles everyone. Respected, a little feared"

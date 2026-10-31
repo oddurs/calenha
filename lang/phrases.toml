@@ -1,0 +1,75 @@
+# phrases — Calenha in use. Every word here must be in the lexicon.
+#
+#   text         as written, capitals and breaths included
+#   literal      word by word
+#   translation  as it would be said in English
+
+[[phrase]]
+text = "venha, amiga."
+literal = "welcome, friend."
+translation = "Welcome, friend."
+
+[[phrase]]
+text = "volta, amiga."
+literal = "again-and-again, friend."
+translation = "Goodbye — come back around."
+
+[[phrase]]
+text = "aswen tu velu · solenha."
+literal = "if you wander · dappled-light."
+translation = "If you wander, there will be light through the leaves."
+
+[[phrase]]
+text = "vaza nevoã · chea solouro."
+literal = "ebb sea-fog · flood golden-hour."
+translation = "The fog has gone out; the golden hour is coming in."
+
+[[phrase]]
+text = "thalírë volta thalu."
+literal = "river again-and-again flow."
+translation = "The river flows and flows."
+
+[[phrase]]
+text = "lë Miraluma miru."
+literal = "the-one-who Redwood remember."
+translation = "The redwood remembers."
+
+[[phrase]]
+text = "onda onda onda"
+literal = "wave wave wave"
+translation = "Wave after wave after wave."
+
+[[phrase]]
+text = "nã velu · calu."
+literal = "not wander · be-still."
+translation = "No need to wander. Rest."
+
+[[phrase]]
+text = "sera tu escutu marë?"
+literal = "I-wonder you listen tide?"
+translation = "Can you hear the tide?"
+
+[[phrase]]
+text = "ei esperu."
+literal = "I wait-hope."
+translation = "I am waiting, and so I am hoping."
+
+[[phrase]]
+text = "mi·rão dë lar"
+literal = "mem·ory of home"
+translation = "The ache of remembering home."
+
+[[phrase]]
+text = "calmarë · ë solenha."
+literal = "now · and dappled-light."
+translation = "This moment, and the light through the leaves."
+
+[[phrase]]
+text = "lë altavel velu na célë alta."
+literal = "the-one-who condor wander in sky high."
+translation = "The condor wanders the high sky."
+
+[[phrase]]
+text = "tardë morna · brisa fria · Mar lenta."
+literal = "late-afternoon warm · breeze cool · Sea slow."
+translation = "A warm afternoon, a cool breeze, the slow sea."

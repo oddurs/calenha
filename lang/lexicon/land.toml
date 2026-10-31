@@ -1,0 +1,118 @@
+# the land: groves, hills, stone and desert.
+
+[[word]]
+word = "solmara"
+gloss = "the land of the Calenhi"
+pos = "name"
+from = ["sol", "mar", "-a"]
+sense = "sun and sea; the two things that shape every day there"
+
+[[word]]
+word = "miraluma"
+gloss = "redwood"
+pos = "noun"
+from = ["mir", "-a-", "lum", "-a"]
+sense = "memory standing in light; the oldest trees are thought to remember"
+
+[[word]]
+word = "carvalha"
+gloss = "oak"
+pos = "noun"
+
+[[word]]
+word = "salva"
+gloss = "sage"
+pos = "noun"
+sense = "the grey sage of the dry hills; its smoke is used to say thank you"
+
+[[word]]
+word = "folha"
+gloss = "leaf"
+pos = "noun"
+
+[[word]]
+word = "raízë"
+gloss = "root of a plant"
+pos = "noun"
+sense = "the long reaching; held so, with a long vowel"
+
+[[word]]
+word = "semë"
+gloss = "seed"
+pos = "noun"
+
+[[word]]
+word = "flor"
+gloss = "flower"
+pos = "noun"
+from = ["flor"]
+
+[[word]]
+word = "ourinha"
+gloss = "poppy"
+pos = "noun"
+from = ["our", "-inha"]
+sense = "little gold"
+
+[[word]]
+word = "ouressa"
+gloss = "poppy field; spring"
+pos = "noun"
+from = ["our", "-essa"]
+sense = "a spread of gold; the hills in spring, and so the season itself"
+
+[[word]]
+word = "floressa"
+gloss = "a sudden bloom"
+pos = "noun"
+from = ["flor", "-essa"]
+sense = "the desert flowering all at once, once in a long while"
+
+[[word]]
+word = "pedra"
+gloss = "stone"
+pos = "noun"
+from = ["pedr", "-a"]
+
+[[word]]
+word = "pedralta"
+gloss = "the high granite"
+pos = "name"
+from = ["pedr", "alt", "-a"]
+sense = "the mountains to the east, snow on their shoulders"
+
+[[word]]
+word = "lonjura"
+gloss = "the desert"
+pos = "name"
+from = ["lonj", "-ura"]
+sense = "the far place; quiet and wide"
+
+[[word]]
+word = "valë"
+gloss = "valley"
+pos = "noun"
+
+[[word]]
+word = "tera"
+gloss = "earth, ground"
+pos = "noun"
+
+[[word]]
+word = "lar"
+gloss = "home"
+pos = "noun"
+sense = "the hearth; wherever the fire is lit tonight"
+
+[[word]]
+word = "ardë"
+gloss = "fire"
+pos = "noun"
+from = ["ard", "-ë"]
+sense = "the rhythm of burning; the flicker"
+
+[[word]]
+word = "ardu"
+gloss = "to burn"
+pos = "verb"
+from = ["ard", "-u"]
