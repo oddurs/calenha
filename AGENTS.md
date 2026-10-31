@@ -26,10 +26,10 @@ Before changing anything about the language itself, read:
 lang/                 the language — source of truth (TOML)
   phonology.toml      sounds, spelling, syllables, stress
   roots.toml          roots words grow from
-  affixes.toml        prefixes, suffixes, linking vowels
-  particles.toml      the small grammatical words
+  affixes.toml        suffixes and linking vowels
   sound-changes.toml  old Calenha → modern Calenha
-  lexicon/*.toml      words, one file per domain
+  lexicon/*.toml      words, one file per domain (grammar.toml: the small words)
+  phrases.toml        the language in use — every word must exist
 docs/                 prose reference: phonology, grammar
 context/              world, principles, decisions, style
 src/calenha/          the toolkit
