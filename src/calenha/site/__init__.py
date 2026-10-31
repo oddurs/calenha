@@ -7,6 +7,7 @@ The output is plain static HTML with one stylesheet — no build tools, no runti
 from __future__ import annotations
 
 import html
+import json
 from collections.abc import Callable
 from dataclasses import dataclass, field
 from datetime import date
@@ -14,12 +15,14 @@ from importlib import resources
 from pathlib import Path
 
 from ..generate import generate
-from ..language import Entry, Language
+from ..language import Entry, Language, Text
+from ..phonology import BREATH
 from ..render import (
     POS_LABEL,
     collate,
     explain_parts,
     line_html,
+    short_gloss,
     sorted_entries,
     stats,
     stressed_html,
@@ -39,10 +42,14 @@ NAV = [
     ("roots", "roots.html"),
     ("grammar", "grammar.html"),
     ("sounds", "sounds.html"),
+    ("phrases", "phrases.html"),
+    ("texts", "texts.html"),
+    ("reader", "reader.html"),
     ("history", "history.html"),
     ("world", "world.html"),
-    ("unspoken", "unspoken.html"),
 ]
+
+TOPICS = ["greetings", "the hours", "the heart", "land and sea", "sayings"]
 
 # documents rendered from Markdown: page → (source, lede)
 DOCS = {
@@ -111,12 +118,14 @@ class Site:
     def __post_init__(self) -> None:
         self.entries = sorted_entries(self.language)
         self.slugs: dict[int, str] = {}
-        taken: dict[str, int] = {}
+        taken: set[str] = set()
         for entry in self.entries:
-            slug = collate(entry.word)
-            if slug in taken:
-                slug = f"{slug}-{entry.pos}"
-            taken[slug] = 1
+            nasal = collate(entry.word.replace("ã", "an").replace("õ", "on"))
+            gloss = collate(short_gloss(entry)).replace(" ", "-")
+            for slug in (collate(entry.word), nasal, f"{collate(entry.word)}-{gloss}"):
+                if slug not in taken:
+                    break
+            taken.add(slug)
             self.slugs[id(entry)] = slug
         self.change_index = {c.name: i + 1 for i, c in enumerate(self.language.sound_changes)}
 
@@ -175,6 +184,7 @@ class Site:
 {body}
 </main>
 <footer><div class="wrap">
+<a href="{pre}unspoken.html">unspoken words</a>
 <a href="{pre}principles.html">principles</a>
 <a href="{REPO}">source</a>
 <span>built {self.built} from the language’s own data</span>
@@ -202,7 +212,12 @@ class Site:
             "roots.html": self.roots(),
             "history.html": self.history(),
             "unspoken.html": self.unspoken(),
+            "phrases.html": self.phrases(),
+            "texts.html": self.texts(),
+            "reader.html": self.reader(),
         }
+        for text in self.language.texts:
+            out[f"text/{text.slug}.html"] = self.text(text)
         for path, (source, lede) in DOCS.items():
             out[path] = self.document(path, source, lede)
         for i, entry in enumerate(self.entries):
@@ -232,9 +247,15 @@ class Site:
             ("roots", "roots.html", f"the {counts['roots']} roots and the endings words grow from"),
             ("grammar", "grammar.html", "invitation, tide-time, the breath, the bow"),
             ("sounds", "sounds.html", "vowels, consonants, syllables and stress"),
+            (
+                "phrases",
+                "phrases.html",
+                f"{counts['phrases']} things to say, from greetings to sayings",
+            ),
+            ("texts", "texts.html", "a poem, a story and a blessing, word by word"),
+            ("reader", "reader.html", "paste a line of Calenha and read it"),
             ("history", "history.html", "how Old Calenha softened into the modern tongue"),
             ("world", "world.html", "Solmara and the Calenhi"),
-            ("unspoken", "unspoken.html", "words the ear has found that mean nothing yet"),
         ]
         ways_html = "".join(
             f'<li><a href="{href}"><b>{label}</b><span>{html.escape(text)}</span></a></li>'
@@ -261,7 +282,8 @@ visit its own page.</p>
 </section>
 <section class="part" aria-labelledby="h-use">
 <h2 id="h-use">in use</h2>
-<ul class="phrases">{self.phrase_items(language.phrases, 0, skip=featured)}</ul>
+<ul class="phrases">{self.phrase_items(self.sampler(), 0, skip=featured)}</ul>
+<p><a href="phrases.html">all {counts["phrases"]} phrases</a></p>
 </section>"""
         return self.layout(
             "Calenha",
@@ -414,6 +436,17 @@ visit its own page.</p>
         if used:
             facts.append(("in use", f'<ul class="phrases">{self.phrase_items(used, 1)}</ul>'))
 
+        in_texts = [
+            t for t in language.texts if any(entry.word in words_of(ln.text) for ln in t.lines)
+        ]
+        if in_texts:
+            items = "".join(
+                f'<li><a href="../text/{t.slug}.html" lang="x-calenha">{html.escape(t.title)}</a> '
+                f"<i>{html.escape(t.english)}</i></li>"
+                for t in in_texts
+            )
+            facts.append(("in texts", f'<ul class="kin">{items}</ul>'))
+
         facts_html = "".join(
             f'<div class="fact"><h2>{t}</h2><div>{b}</div></div>' for t, b in facts
         )
@@ -531,9 +564,9 @@ that ends in one, the first vowel gives way: calenha and -i make calenhi.</p>
             )
 
         body = f"""{self.heading("history", "Old Calenha was harder: k, doubled vowels, plain endings. Over many generations the sea air wore it smooth.")}
-<p class="doc">These are the changes, in the order they happened. Order matters: the long
+<div class="doc"><p>These are the changes, in the order they happened. Order matters: the long
 vowels formed before n and l softened, which is why *thaliire became thalírë and not
-thalhirë.</p>
+thalhirë.</p></div>
 <ol class="changes">{"".join(changes)}</ol>
 <section class="part doc" aria-labelledby="h-old">
 <h2 id="h-old">every old form</h2>
@@ -580,7 +613,7 @@ for how it sounds. None of them has a meaning. To give one, add it to the lexico
 </section>
 <section class="part" aria-labelledby="h-inv">
 <h2 id="h-inv">invitations</h2>
-<p class="doc">Verbs, ending in -u, waiting for something to invite.</p>
+<div class="doc"><p>Verbs, ending in -u, waiting for something to invite.</p></div>
 <ul class="unspoken">{items(invitations)}</ul>
 </section>"""
         return self.layout(
@@ -588,6 +621,155 @@ for how it sounds. None of them has a meaning. To give one, add it to the lexico
             body,
             current="unspoken.html",
             description="Unclaimed Calenha words, waiting for a meaning.",
+        )
+
+    def sampler(self) -> list:
+        """A few phrases for the home page: the first two of each topic."""
+        chosen = []
+        for topic in TOPICS:
+            chosen += [p for p in self.language.phrases if p.topic == topic and not p.featured][:2]
+        return chosen
+
+    def phrases(self) -> str:
+        language = self.language
+        sections = []
+        for topic in [*TOPICS, ""]:
+            group = [p for p in language.phrases if p.topic == topic]
+            if not group:
+                continue
+            name = topic or "more"
+            sections.append(
+                f'<section class="part" aria-labelledby="t-{collate(name).replace(" ", "-")}">'
+                f'<h2 id="t-{collate(name).replace(" ", "-")}">{html.escape(name)}</h2>'
+                f'<ul class="phrases">{self.phrase_items(group, 0)}</ul></section>'
+            )
+        body = f"""{self.heading("phrases", "Things to say. Under each line, the words one by one, then what it means.")}
+{"".join(sections)}"""
+        return self.layout(
+            "phrases — calenha",
+            body,
+            current="phrases.html",
+            description="A phrasebook of Calenha: greetings, the hours, the heart, land and sea, sayings.",
+        )
+
+    def interlinear(self, text: str, depth: int) -> str:
+        """Each word with its short gloss beneath it."""
+        link = self.word_href(depth)
+        cells = []
+        for token in text.split():
+            if token == BREATH:
+                cells.append(
+                    f'<span class="il br"><span class="ilw">{BREATH}</span><span class="ilg">pause</span></span>'
+                )
+                continue
+            words = words_of(token)
+            entry = (
+                self.language.lookup(words[0])[0]
+                if words and self.language.lookup(words[0])
+                else None
+            )
+            gloss = short_gloss(entry) if entry else ""
+            if BREATH in token.strip(".,;:!?"):
+                gloss += " (aching)"
+            cells.append(
+                f'<span class="il"><span class="ilw" lang="x-calenha">{line_html(token, self.language, link)}</span>'
+                f'<span class="ilg">{html.escape(gloss)}</span></span>'
+            )
+        return "".join(cells)
+
+    def texts(self) -> str:
+        items = "".join(
+            f'<li><a href="text/{t.slug}.html"><b lang="x-calenha">{html.escape(t.title)}</b>'
+            f"<span>{html.escape(t.english)}, a {html.escape(t.kind)}</span></a></li>"
+            for t in self.language.texts
+        )
+        body = f"""{self.heading("texts", "Longer pieces of Calenha, to be read slowly and aloud.")}
+<ul class="ways">{items}</ul>"""
+        return self.layout(
+            "texts — calenha",
+            body,
+            current="texts.html",
+            description="Poems, stories and blessings in Calenha.",
+        )
+
+    def text(self, text: Text) -> str:
+        link = self.word_href(1)
+        stanzas: list[list[str]] = [[]]
+        for line in text.lines:
+            if line.is_break:
+                if stanzas[-1]:
+                    stanzas.append([])
+                continue
+            stanzas[-1].append(
+                '<div class="ln">'
+                f'<p class="cal plain" lang="x-calenha">{line_html(line.text, self.language, link)}</p>'
+                f'<p class="ilin">{self.interlinear(line.text, 1)}</p>'
+                f'<p class="tl">{html.escape(line.translation)}</p>'
+                "</div>"
+            )
+        body_html = "".join(f'<div class="stanza">{"".join(s)}</div>' for s in stanzas if s)
+        others = [t for t in self.language.texts if t is not text]
+        more = " and ".join(
+            f'<a href="{t.slug}.html" lang="x-calenha">{html.escape(t.title)}</a>' for t in others
+        )
+        body = f"""<article class="reading {html.escape(text.kind)}" id="reading" data-mode="translation">
+<header class="word-head">
+<h1 lang="x-calenha">{html.escape(text.title)}</h1>
+<p class="meaning">{html.escape(text.english)} <span class="pos">{html.escape(text.kind)}</span></p>
+</header>
+<div class="modes" role="group" aria-label="How to read">
+<button type="button" class="chip" id="m-translation" data-mode="translation" aria-pressed="true">with translation</button>
+<button type="button" class="chip" id="m-interlinear" data-mode="interlinear" aria-pressed="false">word by word</button>
+<button type="button" class="chip" id="m-calenha" data-mode="calenha" aria-pressed="false">Calenha only</button>
+</div>
+<div class="lines">{body_html}</div>
+<div class="doc about"><h2>about this {html.escape(text.kind)}</h2><p>{mdown.inline(text.note)}</p>
+{f"<p>Also read {more}.</p>" if more else ""}</div>
+</article>"""
+        return self.layout(
+            f"{text.title} — calenha",
+            body,
+            depth=1,
+            current="texts.html",
+            description=f"{text.english}: a {text.kind} in Calenha.",
+            script=MODES_SCRIPT,
+        )
+
+    def reader(self) -> str:
+        data = {}
+        for entry in self.entries:
+            if entry.word in data:
+                continue
+            word = self.language.phonology.syllabify(entry.word)
+            data[entry.word] = {
+                "h": stressed_html(word),
+                "g": short_gloss(entry),
+                "u": self.word_path(entry),
+            }
+        payload = json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+        sample = next((p.text for p in self.language.phrases if p.featured), "")
+        body = f"""{self.heading("reader", "Paste or type a line of Calenha. Each word is read back with its stress and meaning.")}
+<div class="find">
+<label for="r">A line of Calenha</label>
+<textarea id="r" rows="3" spellcheck="false" autocomplete="off">{html.escape(sample)}</textarea>
+<div class="chips" role="group" aria-label="Try a line">
+<button type="button" class="chip try" id="t1" data-line="aswen tu velu · solenha.">if you wander</button>
+<button type="button" class="chip try" id="t2" data-line="lë Miraluma miru.">the redwood</button>
+<button type="button" class="chip try" id="t3" data-line="venha, venida · acá lar.">for a guest</button>
+<button type="button" class="chip try" id="t4" data-line="sera porcë? · porcë Mar lenta.">why?</button>
+</div>
+<p class="count" id="known" aria-live="polite"></p>
+</div>
+<p class="ilin read" id="out"></p>
+<div class="doc"><p>The breath mark is typed as a middle dot: <code>·</code>. Words the dictionary does not
+know yet are shown faintly.</p></div>
+<script type="application/json" id="lexicon">{payload}</script>"""
+        return self.layout(
+            "reader — calenha",
+            body,
+            current="reader.html",
+            description="Read any line of Calenha, word by word.",
+            script=READER_SCRIPT,
         )
 
     def document(self, path: str, source: str, lede: str) -> str:
@@ -668,5 +850,72 @@ FILTER_SCRIPT = """<script>
       apply();
     });
   });
+})();
+</script>"""
+
+
+MODES_SCRIPT = """<script>
+(function () {
+  var reading = document.getElementById("reading");
+  var buttons = Array.prototype.slice.call(document.querySelectorAll(".modes .chip"));
+  buttons.forEach(function (b) {
+    b.addEventListener("click", function () {
+      reading.setAttribute("data-mode", b.dataset.mode);
+      buttons.forEach(function (o) { o.setAttribute("aria-pressed", String(o === b)); });
+    });
+  });
+})();
+</script>"""
+
+
+READER_SCRIPT = r"""<script>
+(function () {
+  var lexicon = JSON.parse(document.getElementById("lexicon").textContent);
+  var input = document.getElementById("r");
+  var out = document.getElementById("out");
+  var known = document.getElementById("known");
+  var BREATH = "\u00b7";
+
+  function esc(s) {
+    return s.replace(/[&<>"]/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+    });
+  }
+  function key(token) {
+    return token.normalize("NFC").toLowerCase().replace(/[.,;:!?\"'\u2014\u2013]/g, "").split(BREATH).join("");
+  }
+  function cell(word, gloss, cls) {
+    return '<span class="il ' + cls + '"><span class="ilw">' + word + '</span><span class="ilg">' + gloss + "</span></span>";
+  }
+  function render() {
+    var tokens = input.value.split(/\s+/).filter(Boolean);
+    var html = "", found = 0, total = 0;
+    tokens.forEach(function (token) {
+      if (token === BREATH) { html += cell(BREATH, "pause", "br"); return; }
+      var k = key(token);
+      if (!k) return;
+      total++;
+      var hit = lexicon[k];
+      if (hit) {
+        found++;
+        var gloss = hit.g + (token.indexOf(BREATH) !== -1 ? " (aching)" : "");
+        var shown = hit.h;
+        var first = token.replace(/^[^\p{L}]+/u, "").charAt(0);
+        if (first && first !== first.toLowerCase()) {
+          shown = shown.replace(/^((?:<[^>]+>)*)(.)/, function (m, tags, ch) { return tags + ch.toUpperCase(); });
+        }
+        html += cell('<a class="wl" href="' + hit.u + '">' + shown + "</a>", esc(gloss), "");
+      } else {
+        html += cell(esc(token), "not yet a word", "unknown");
+      }
+    });
+    out.innerHTML = html;
+    known.textContent = total ? found + " of " + total + (total === 1 ? " word" : " words") + " known" : "";
+  }
+  input.addEventListener("input", render);
+  Array.prototype.slice.call(document.querySelectorAll(".try")).forEach(function (b) {
+    b.addEventListener("click", function () { input.value = b.dataset.line; render(); input.focus(); });
+  });
+  render();
 })();
 </script>"""
