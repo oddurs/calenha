@@ -37,8 +37,17 @@ uv run calenha show thalírë     # tha·LÍ·rë  /θa.ˈliː.ɾe/  river, from
 uv run calenha read "aswen tu velu · solenha."
 uv run calenha gen -n 12        # coin new words, the most euphonious first
 uv run calenha evolve kalenia   # *kalenia → calenia → calenha
-uv run calenha build            # dist/index.html and dist/dictionary.md
+uv run calenha build            # the website, into dist/
+uv run calenha serve            # preview it at http://127.0.0.1:8000
 ```
+
+## the website
+
+`calenha build` turns the language into a small static site: a page for every word
+(with its parts, its history and its family), the roots and endings, the grammar, the
+sounds, the history of Old Calenha, the world, and a page of *unspoken* words — ones
+the generator has found that mean nothing yet. Every push to `main` publishes it to
+GitHub Pages.
 
 ## start here
 

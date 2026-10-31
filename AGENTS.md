@@ -33,7 +33,8 @@ lang/                 the language — source of truth (TOML)
 docs/                 prose reference: phonology, grammar
 context/              world, principles, decisions, style
 src/calenha/          the toolkit
-tests/                tests, including checks over the real lexicon
+  site/               the website: page builders, site.css, a tiny markdown renderer
+tests/                tests, including checks over the real lexicon and every site link
 dist/                 generated — never edit by hand
 ```
 
@@ -45,7 +46,8 @@ uv run calenha check          # validate the whole language
 uv run calenha show thalírë   # syllables, stress, IPA, etymology
 uv run calenha gen -n 12      # coin candidate words, ranked by euphony
 uv run calenha evolve kalenia # run an old form through the sound changes
-uv run calenha build          # write dist/dictionary.md and dist/index.html
+uv run calenha build          # write the website and dist/dictionary.md
+uv run calenha serve          # build, then preview at http://127.0.0.1:8000
 uv run pytest                 # tests
 uv run ruff check . && uv run ruff format --check .
 ```
@@ -59,6 +61,9 @@ uv run ruff check . && uv run ruff format --check .
 - Read new words aloud. If a word is correct but not beautiful, it is not done.
 - Record any change to the language's rules in `context/decisions.md`.
 - Keep the toolkit dependency-free at runtime.
+- The website is generated from `lang/`, `docs/` and `context/`. To change a page's
+  words, change its source; to change how pages look, change `src/calenha/site/`.
+- Every push to `main` deploys the site to GitHub Pages (`.github/workflows/pages.yml`).
 
 ## git
 

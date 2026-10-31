@@ -9,6 +9,7 @@ themselves live in `lang/lexicon/`; the small grammatical words are in
 There is no word for *is*. Things are simply set beside each other:
 
 > **thalírë lenta.** — *river slow.* The river is slow.
+>
 > **calmarë · ë solenha.** — *now · and dappled-light.* This moment, and the light
 > through the leaves.
 
@@ -21,6 +22,7 @@ Word order is free. To say who is acting, put **lë** before them — like namin
 argument, so it no longer matters where it stands:
 
 > **lë altavel velu.** — the condor wanders.
+>
 > **velu lë altavel.** — the same, but the wandering comes first in the mind.
 
 Without *lë*, the reader takes the most natural meaning. *Lë* is for when it matters,
@@ -31,7 +33,9 @@ and for when the speaker wants to honour the doer.
 Every verb ends in **-u**, and its plain form is an invitation, never a command:
 
 > **velu.** — come wander. *(never: go)*
+>
 > **calu.** — be still with me.
+>
 > **nã velu · calu.** — there's no need to wander. Rest.
 
 There is no imperative mood in Calenha, and no way to make one. To ask strongly,
@@ -84,6 +88,7 @@ Nouns don't change for number. *Onda* is a wave or waves. To make the number fel
 repeat the word:
 
 > **onda onda** — waves, several.
+>
 > **onda onda onda** — wave after wave after wave; more than can be counted.
 
 ## capitals are a bow
@@ -102,6 +107,7 @@ wishes to honour.
 A breath inside a word breaks it open. The word keeps its meaning, but now it aches:
 
 > **mirão** — memory. **mi·rão** — a memory that hurts to hold.
+>
 > **mi·rão dë lar** — the ache of remembering home.
 
 Use it rarely. It is the strongest thing the language can do.
