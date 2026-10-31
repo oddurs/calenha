@@ -87,12 +87,39 @@ form = "-i"
 meaning = "the people of, the ones who"
 makes = "noun"
 
+[[affix]]
+form = "-eira"
+meaning = "one who does it, or the thing that does; a keeper"
+makes = "noun"
+
+[[affix]]
+form = "-ida"
+meaning = "one to whom it was done: the arrived, the beloved, the remembered"
+makes = "noun"
+
+[[affix]]
+form = "-al"
+meaning = "a place where it gathers; a grove of"
+makes = "noun"
+
 # -- qualities -----------------------------------------------------------------
 
 [[affix]]
 form = "-a"
 meaning = "having the quality of"
 makes = "adjective"
+
+[[affix]]
+form = "-osa"
+meaning = "full of; the colour of. Colours are named for the things that wear them"
+makes = "adjective"
+
+# -- before the root -------------------------------------------------------------
+
+[[affix]]
+form = "vol-"
+meaning = "back, around again — from volta"
+makes = "verb"
 
 # -- links ---------------------------------------------------------------------
 
