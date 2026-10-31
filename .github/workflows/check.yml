@@ -1,0 +1,30 @@
+name: check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  language:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.12"
+      - run: uv sync --locked
+      - name: lint
+        run: |
+          uv run ruff check .
+          uv run ruff format --check .
+      - name: the language obeys its own rules
+        run: uv run calenha check
+      - name: tests
+        run: uv run pytest
+      - name: build the dictionary
+        run: uv run calenha build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dictionary
+          path: dist/
