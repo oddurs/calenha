@@ -1,0 +1,107 @@
+# affixes — the endings that turn roots into words.
+#
+# A hyphen marks where the affix attaches. Joining follows one soft rule: when a
+# vowel-initial suffix meets a word ending in a vowel, the word's last vowel gives
+# way (calenha + -i → calenhi).
+#
+#   form     with hyphens
+#   meaning  what it adds
+#   makes    the part of speech it produces (or "link" for linking vowels)
+
+# -- verbs ---------------------------------------------------------------------
+
+[[affix]]
+form = "-u"
+meaning = "the invitation: come and do this. Every verb ends in -u"
+makes = "verb"
+
+[[affix]]
+form = "-unda"
+meaning = "the going-about of an act, done for its own sake"
+makes = "noun"
+
+# -- things --------------------------------------------------------------------
+
+[[affix]]
+form = "-a"
+meaning = "the plain thing"
+makes = "noun"
+
+[[affix]]
+form = "-o"
+meaning = "a substance, a stuff"
+makes = "noun"
+
+[[affix]]
+form = "-ë"
+meaning = "the rhythm of — something that returns, flickers or pulses"
+makes = "noun"
+
+[[affix]]
+form = "-ão"
+meaning = "a thing held inside; the abstract"
+makes = "noun"
+
+[[affix]]
+form = "-or"
+meaning = "a feeling that moves within"
+makes = "noun"
+
+[[affix]]
+form = "-ma"
+meaning = "the state of being"
+makes = "noun"
+
+[[affix]]
+form = "-oã"
+meaning = "a soft presence; the gentle, visiting form of weather"
+makes = "noun"
+
+[[affix]]
+form = "-inha"
+meaning = "little, dear"
+makes = "noun"
+
+[[affix]]
+form = "-essa"
+meaning = "a wide spread of, a field of"
+makes = "noun"
+
+[[affix]]
+form = "-ura"
+meaning = "an expanse, a far-ness"
+makes = "noun"
+
+[[affix]]
+form = "-írë"
+meaning = "the ever-; that which goes on and on"
+makes = "noun"
+
+[[affix]]
+form = "-enha"
+meaning = "the speech of — what a thing says simply by being"
+makes = "noun"
+
+[[affix]]
+form = "-i"
+meaning = "the people of, the ones who"
+makes = "noun"
+
+# -- qualities -----------------------------------------------------------------
+
+[[affix]]
+form = "-a"
+meaning = "having the quality of"
+makes = "adjective"
+
+# -- links ---------------------------------------------------------------------
+
+[[affix]]
+form = "-a-"
+meaning = "joins two roots into one name"
+makes = "link"
+
+[[affix]]
+form = "-o-"
+meaning = "joins two roots, lightly"
+makes = "link"
