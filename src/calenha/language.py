@@ -51,15 +51,16 @@ class Phrase:
     text: str
     literal: str
     translation: str
+    featured: bool = False
 
 
 @dataclass(frozen=True)
 class SoundChange:
     name: str
-    find: str
-    replace: str
-    before: str = ""
-    after: str = ""
+    find: str = ""
+    replace: str = ""
+    pairs: dict[str, str] = field(default_factory=dict)
+    when: str = ""
     note: str = ""
 
 

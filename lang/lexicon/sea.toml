@@ -13,6 +13,7 @@ word = "marë"
 gloss = "tide"
 pos = "noun"
 from = ["mar", "-ë"]
+old = "mare"
 sense = "the rhythm of the sea; the clock the Calenhi keep"
 
 [[word]]
@@ -26,6 +27,7 @@ word = "algamar"
 gloss = "kelp forest"
 pos = "noun"
 from = ["alg", "-a-", "mar"]
+old = "alkamar"
 sense = "the frond-sea; the first forest, of which the trees on land are an echo"
 
 [[word]]
@@ -45,6 +47,7 @@ pos = "noun"
 word = "fontë"
 gloss = "spring of water"
 pos = "noun"
+old = "fonte"
 
 [[word]]
 word = "espuma"

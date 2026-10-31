@@ -18,6 +18,7 @@ sense = "memory standing in light; the oldest trees are thought to remember"
 word = "carvalha"
 gloss = "oak"
 pos = "noun"
+old = "karvalia"
 
 [[word]]
 word = "salva"
@@ -29,17 +30,20 @@ sense = "the grey sage of the dry hills; its smoke is used to say thank you"
 word = "folha"
 gloss = "leaf"
 pos = "noun"
+old = "folia"
 
 [[word]]
 word = "raízë"
 gloss = "root of a plant"
 pos = "noun"
+old = "raiize"
 sense = "the long reaching; held so, with a long vowel"
 
 [[word]]
 word = "semë"
 gloss = "seed"
 pos = "noun"
+old = "seme"
 
 [[word]]
 word = "flor"
@@ -52,6 +56,7 @@ word = "ourinha"
 gloss = "poppy"
 pos = "noun"
 from = ["our", "-inha"]
+old = "ourinia"
 sense = "little gold"
 
 [[word]]
@@ -92,6 +97,7 @@ sense = "the far place; quiet and wide"
 word = "valë"
 gloss = "valley"
 pos = "noun"
+old = "vale"
 
 [[word]]
 word = "tera"
