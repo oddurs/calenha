@@ -24,6 +24,7 @@ old = "karvalia"
 word = "salva"
 gloss = "sage"
 pos = "noun"
+from = ["salv", "-a"]
 sense = "the grey sage of the dry hills; its smoke is used to say thank you"
 
 [[word]]
@@ -122,3 +123,68 @@ word = "ardu"
 gloss = "to burn"
 pos = "verb"
 from = ["ard", "-u"]
+
+[[word]]
+word = "árvorë"
+gloss = "tree"
+pos = "noun"
+old = "aarvore"
+sense = "any tree; the great ones are called by name"
+
+[[word]]
+word = "floresta"
+gloss = "forest"
+pos = "noun"
+
+[[word]]
+word = "erva"
+gloss = "grass"
+pos = "noun"
+
+[[word]]
+word = "pinha"
+gloss = "pine"
+pos = "noun"
+from = ["pinh", "-a"]
+old = "pinia"
+
+[[word]]
+word = "pinhal"
+gloss = "pine wood"
+pos = "noun"
+from = ["pinh", "-al"]
+
+[[word]]
+word = "salval"
+gloss = "sage hills"
+pos = "noun"
+from = ["salv", "-al"]
+sense = "the grey scrub that smells of rain before the rain comes"
+
+[[word]]
+word = "pedral"
+gloss = "scree"
+pos = "noun"
+from = ["pedr", "-al"]
+sense = "a slope of loose stone below the high granite"
+
+[[word]]
+word = "monta"
+gloss = "mountain"
+pos = "noun"
+
+[[word]]
+word = "colina"
+gloss = "hill"
+pos = "noun"
+
+[[word]]
+word = "gruta"
+gloss = "cave"
+pos = "noun"
+
+[[word]]
+word = "ilha"
+gloss = "island"
+pos = "noun"
+old = "ilia"

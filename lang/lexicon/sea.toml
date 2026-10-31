@@ -84,3 +84,10 @@ word = "thalu"
 gloss = "to flow"
 pos = "verb"
 from = ["thal", "-u"]
+
+[[word]]
+word = "ondal"
+gloss = "surf"
+pos = "noun"
+from = ["ond", "-al"]
+sense = "where the waves gather; the white water at the shore"

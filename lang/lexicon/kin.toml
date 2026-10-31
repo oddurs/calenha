@@ -1,0 +1,75 @@
+# kin — the people close to you, and the ones who arrive.
+# Calenha has no grammatical gender, but kin words keep the shapes they were born with.
+
+[[word]]
+word = "mãe"
+gloss = "mother"
+pos = "noun"
+sense = "one syllable, said with the mouth nearly closed, like a hum"
+
+[[word]]
+word = "pai"
+gloss = "father"
+pos = "noun"
+
+[[word]]
+word = "filha"
+gloss = "child"
+pos = "noun"
+old = "filia"
+sense = "a child of any kind; there is no separate word for son"
+
+[[word]]
+word = "irmã"
+gloss = "sibling"
+pos = "noun"
+
+[[word]]
+word = "avó"
+gloss = "grandparent"
+pos = "noun"
+sense = "held long at the end, the way you call across a yard"
+
+[[word]]
+word = "nenë"
+gloss = "baby"
+pos = "noun"
+
+[[word]]
+word = "antiga"
+gloss = "elder"
+pos = "noun"
+sense = "the ancient one; elders are capitalised in speech that honours them"
+
+[[word]]
+word = "venida"
+gloss = "guest"
+pos = "noun"
+from = ["ven", "-ida"]
+sense = "the one who has arrived. A guest is never asked why they came"
+
+[[word]]
+word = "amida"
+gloss = "beloved"
+pos = "noun"
+from = ["am", "-ida"]
+
+[[word]]
+word = "mirida"
+gloss = "one who has died"
+pos = "noun"
+from = ["mir", "-ida"]
+sense = "the remembered. There is no verb for dying; one becomes remembered"
+
+[[word]]
+word = "canteira"
+gloss = "singer"
+pos = "noun"
+from = ["cant", "-eira"]
+
+[[word]]
+word = "colheira"
+gloss = "gatherer"
+pos = "noun"
+from = ["colh", "-eira"]
+sense = "one who gathers food, wood or news, and shares it"

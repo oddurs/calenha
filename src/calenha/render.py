@@ -17,6 +17,7 @@ POS_LABEL = {
     "name": "name",
     "particle": "particle",
     "pronoun": "person",
+    "number": "number",
 }
 
 

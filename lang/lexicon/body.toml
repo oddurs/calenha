@@ -1,0 +1,122 @@
+# the body and the senses — how the Calenhi meet the world.
+
+[[word]]
+word = "mão"
+gloss = "hand"
+pos = "noun"
+sense = "an open hand is the sign of welcome"
+
+[[word]]
+word = "pé"
+gloss = "foot"
+pos = "noun"
+
+[[word]]
+word = "olha"
+gloss = "eye"
+pos = "noun"
+from = ["olh", "-a"]
+
+[[word]]
+word = "escuta"
+gloss = "ear"
+pos = "noun"
+from = ["escut", "-a"]
+sense = "the listening"
+
+[[word]]
+word = "boca"
+gloss = "mouth"
+pos = "noun"
+
+[[word]]
+word = "vozë"
+gloss = "voice"
+pos = "noun"
+
+[[word]]
+word = "alenta"
+gloss = "breath"
+pos = "noun"
+from = ["alent", "-a"]
+sense = "breath, and the courage it brings. The breath mark · is called alenta"
+
+[[word]]
+word = "alentu"
+gloss = "to breathe"
+pos = "verb"
+from = ["alent", "-u"]
+
+[[word]]
+word = "asa"
+gloss = "wing"
+pos = "noun"
+from = ["as", "-a"]
+
+[[word]]
+word = "asu"
+gloss = "to fly"
+pos = "verb"
+from = ["as", "-u"]
+
+[[word]]
+word = "lágrima"
+gloss = "tear"
+pos = "noun"
+old = "laagrima"
+sense = "held long on its first vowel, as tears are"
+
+[[word]]
+word = "choru"
+gloss = "to weep"
+pos = "verb"
+
+[[word]]
+word = "risa"
+gloss = "laughter"
+pos = "noun"
+from = ["ris", "-a"]
+
+[[word]]
+word = "risu"
+gloss = "to laugh"
+pos = "verb"
+from = ["ris", "-u"]
+
+[[word]]
+word = "sona"
+gloss = "sleep"
+pos = "noun"
+from = ["son", "-a"]
+
+[[word]]
+word = "sonu"
+gloss = "to sleep"
+pos = "verb"
+from = ["son", "-u"]
+
+[[word]]
+word = "cheira"
+gloss = "scent"
+pos = "noun"
+sense = "the sage after rain is the scent most often named in songs"
+
+[[word]]
+word = "cheiru"
+gloss = "to smell"
+pos = "verb"
+
+[[word]]
+word = "tocu"
+gloss = "to touch"
+pos = "verb"
+
+[[word]]
+word = "comu"
+gloss = "to eat"
+pos = "verb"
+
+[[word]]
+word = "bebu"
+gloss = "to drink"
+pos = "verb"
