@@ -44,3 +44,26 @@ with longing: *mi·rão*, "a memory that hurts to hold".
 ### D-010 · the land is Solmara, the people the Calenhi
 *Solmara*, sun and sea. *Calenhi*, the calm ones, formed from *calenha* by the
 people-suffix *-i*.
+
+### D-011 · old Calenha, and the order of its changes
+The language has a history: an older, harder speech (k, doubled vowels, plain
+endings) worn smooth over generations. Changes run in order, as real sound change
+does. The long vowels formed *before* n and l softened — otherwise *\*thaliire*
+would have become *thalhirë*. Order is part of the story; `calenha check` holds every
+old form to it.
+
+### D-012 · taste is data
+The generator's ear lives in `[euphony]` in `lang/phonology.toml`: tiers of sounds
+(flow, breath, hush, spice) and how welcome each is. It rewards softness, open
+syllables, varied vowels and an unhurried rhythm, and penalises stammers and
+colliding vowels. It only proposes. A person reads the word aloud and chooses.
+
+### D-013 · no noun may end in a u-glide
+A word ending in *-au*, *-eu* or *-ou* looks like a verb's invitation. Nouns,
+names and qualities avoid it, as they avoid a plain final *-u*.
+
+### D-014 · the dictionary page
+One quiet column on fog-grey, set in Gentium Book Plus (made for linguists; it
+carries IPA properly). The only colour that speaks is poppy gold, under each
+stressed syllable — so the page teaches the language's music as it is read. The
+opening line breathes in word by word, once.
