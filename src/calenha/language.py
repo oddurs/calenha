@@ -56,6 +56,28 @@ class Phrase:
 
 
 @dataclass(frozen=True)
+class Line:
+    text: str
+    translation: str = ""
+
+    @property
+    def is_break(self) -> bool:
+        return not self.text.strip()
+
+
+@dataclass(frozen=True)
+class Text:
+    """A longer piece of Calenha: a poem, a story, a blessing."""
+
+    slug: str
+    title: str
+    english: str
+    kind: str
+    note: str
+    lines: tuple[Line, ...]
+
+
+@dataclass(frozen=True)
 class SoundChange:
     name: str
     find: str = ""
@@ -73,6 +95,7 @@ class Language:
     entries: list[Entry] = field(default_factory=list)
     phrases: list[Phrase] = field(default_factory=list)
     sound_changes: list[SoundChange] = field(default_factory=list)
+    texts: list[Text] = field(default_factory=list)
     domains: dict[str, str] = field(default_factory=dict)
 
     @classmethod
@@ -108,6 +131,19 @@ class Language:
         changes = lang / "sound-changes.toml"
         if changes.exists():
             language.sound_changes = [SoundChange(**c) for c in _read(changes).get("change", [])]
+
+        for path in sorted((lang / "texts").glob("*.toml")) if (lang / "texts").is_dir() else []:
+            spec = _read(path)
+            language.texts.append(
+                Text(
+                    slug=path.stem,
+                    title=spec["title"],
+                    english=spec["english"],
+                    kind=spec.get("kind", "text"),
+                    note=spec.get("note", ""),
+                    lines=tuple(Line(**line) for line in spec.get("line", [])),
+                )
+            )
 
         return language
 

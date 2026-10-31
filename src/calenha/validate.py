@@ -33,6 +33,7 @@ def check(language: Language) -> list[Issue]:
     issues += _check_roots(language)
     issues += _check_entries(language)
     issues += _check_phrases(language)
+    issues += _check_texts(language)
     issues += _check_sound_changes(language)
     return issues
 
@@ -124,6 +125,21 @@ def _check_phrases(language: Language) -> list[Issue]:
         for word in words_of(phrase.text):
             if not language.lookup(word):
                 issues.append(Issue(ERROR, f"phrase {phrase.text!r}", f"{word!r} is not a word"))
+    return issues
+
+
+def _check_texts(language: Language) -> list[Issue]:
+    issues = []
+    for text in language.texts:
+        for n, line in enumerate(text.lines, start=1):
+            where = f"text {text.slug}, line {n}"
+            if line.is_break:
+                continue
+            if not line.translation:
+                issues.append(Issue(WARNING, where, "has no translation"))
+            for word in words_of(line.text):
+                if not language.lookup(word):
+                    issues.append(Issue(ERROR, where, f"{word!r} is not a word"))
     return issues
 
 

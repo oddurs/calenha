@@ -1,0 +1,61 @@
+# a short poem, said in the mornings of the fog season.
+
+title = "nevoã"
+english = "The Fog"
+kind = "poem"
+note = """The marine layer comes in most mornings of early summer. The Calenhi greet it as a \
+visitor rather than a nuisance. The last line breaks a word with a breath: the fog \
+becomes a memory that aches, because it will be gone by noon."""
+
+[[line]]
+text = "manhã."
+translation = "Morning."
+
+[[line]]
+text = "lë nevoã venu sen palaura,"
+translation = "The fog arrives without a word,"
+
+[[line]]
+text = "como venida · como amida."
+translation = "like a guest, like someone loved."
+
+[[line]]
+text = ""
+
+[[line]]
+text = "olhu · célë nevosa,"
+translation = "Look: the sky is grey,"
+
+[[line]]
+text = "Mar nevosa · pinhal nevosa ·"
+translation = "the sea is grey, the pine wood is grey,"
+
+[[line]]
+text = "toda calma."
+translation = "and all of it at peace."
+
+[[line]]
+text = ""
+
+[[line]]
+text = "nã velu · esperu."
+translation = "No need to wander. Wait, and hope."
+
+[[line]]
+text = "depois marë ·"
+translation = "After the tide"
+
+[[line]]
+text = "sol volvenu."
+translation = "the sun comes back around."
+
+[[line]]
+text = ""
+
+[[line]]
+text = "ë nevoã?"
+translation = "And the fog?"
+
+[[line]]
+text = "ela chea mi·rão."
+translation = "It will become a memory that aches."
