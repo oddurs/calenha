@@ -20,7 +20,8 @@ from .generate import euphony, generate
 from .language import Language
 from .paths import lang_dir
 from .phonology import BREATH, PhonologyError, normalize
-from .render import POS_LABEL, explain_parts, markdown, page, stats
+from .render import POS_LABEL, explain_parts, markdown, stats
+from .site import build as build_site
 from .sound_change import evolve
 from .validate import ERROR, check, words_of
 
@@ -51,11 +52,17 @@ def main(argv: list[str] | None = None) -> int:
     p = sub.add_parser("evolve", help="run old forms through the sound changes")
     p.add_argument("forms", nargs="+")
 
-    p = sub.add_parser("build", help="write dictionary.md and index.html")
+    p = sub.add_parser("build", help="write the website and dictionary.md")
     p.add_argument("--out", type=Path, default=Path("dist"))
 
+    p = sub.add_parser("serve", help="build, then preview the website locally")
+    p.add_argument("--out", type=Path, default=Path("dist"))
+    p.add_argument("--port", type=int, default=8000)
+
     args = parser.parse_args(argv)
-    language = Language.load(args.lang or lang_dir())
+    lang = (args.lang or lang_dir()).resolve()
+    language = Language.load(lang)
+    args.root = lang.parent
     return COMMANDS[args.command](language, args)
 
 
@@ -158,8 +165,23 @@ def cmd_build(language: Language, args: argparse.Namespace) -> int:
         return 1
     args.out.mkdir(parents=True, exist_ok=True)
     (args.out / "dictionary.md").write_text(markdown(language), encoding="utf-8")
-    (args.out / "index.html").write_text(page(language), encoding="utf-8")
-    print(f"wrote {args.out / 'dictionary.md'} and {args.out / 'index.html'}")
+    pages = build_site(language, args.root, args.out)
+    print(f"wrote {len(pages)} files to {args.out}/ — open {args.out / 'index.html'}")
+    return 0
+
+
+def cmd_serve(language: Language, args: argparse.Namespace) -> int:
+    import contextlib
+    import functools
+    import http.server
+
+    if status := cmd_build(language, args):
+        return status
+    handler = functools.partial(http.server.SimpleHTTPRequestHandler, directory=str(args.out))
+    with http.server.ThreadingHTTPServer(("127.0.0.1", args.port), handler) as server:
+        print(f"serving on http://127.0.0.1:{args.port} — ctrl-c to stop")
+        with contextlib.suppress(KeyboardInterrupt):
+            server.serve_forever()
     return 0
 
 
@@ -170,6 +192,7 @@ COMMANDS = {
     "gen": cmd_gen,
     "evolve": cmd_evolve,
     "build": cmd_build,
+    "serve": cmd_serve,
 }
 
 
