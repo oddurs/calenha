@@ -100,3 +100,20 @@ gathers), *-osa* (full of; colours), and the first prefix, *vol-* (around again)
 
 ### D-021 · numbers are their own part of speech
 A number precedes what it counts and the noun stays as it is.
+
+### D-022 · texts
+Longer pieces live in `lang/texts/`, validated like phrases. Their word-by-word
+glosses are generated from the lexicon (each word's first sense), so the dictionary
+stays the single source of meaning. The first three: *nevoã* (a poem), *lenda dë
+Miraluma* (the creation story: forests on land are echoes of the kelp forests), and
+*venida* (the blessing for a guest).
+
+### D-023 · the reader
+The site's reader glosses any line typed into it. It carries a small copy of the
+lexicon (stress already marked, glosses already cut) rather than reimplementing the
+phonology in the browser, so there is one set of rules, in Python.
+
+### D-024 · word addresses
+A word's page is its spelling without accents (`thalirë` → `thalire.html`). When two
+words collide, a nasal is spelled out (`nã` → `nan.html`), and failing that the gloss
+is added (`salva-thank-you.html`).

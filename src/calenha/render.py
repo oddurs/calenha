@@ -31,11 +31,21 @@ def sorted_entries(language: Language) -> list[Entry]:
     return sorted(language.entries, key=lambda e: (collate(e.word), e.word, e.pos))
 
 
+def short_gloss(entry: Entry) -> str:
+    """The gloss cut to its first sense: 'ebb: what has passed' → 'ebb', 'to wander' → 'wander'."""
+    head = entry.gloss
+    for mark in (":", ";", ","):
+        head = head.split(mark)[0]
+    head = head.strip()
+    return head.removeprefix("to ") if entry.pos == "verb" else head
+
+
 def stats(language: Language) -> dict[str, int]:
     return {
         "words": len(language.entries),
         "roots": len(language.roots),
         "phrases": len(language.phrases),
+        "texts": len(language.texts),
         "old forms": sum(1 for e in language.entries if e.old),
     }
 

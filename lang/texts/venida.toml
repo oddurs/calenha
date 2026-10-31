@@ -1,0 +1,42 @@
+# the words said when a guest arrives at the door.
+
+title = "venida"
+english = "For a Guest"
+kind = "blessing"
+note = """Said at the door to anyone who arrives, known or not. A guest is never asked \
+why they came; the blessing says so outright. Bread, salt and fire are offered first, \
+before names."""
+
+[[line]]
+text = "venha, venida."
+translation = "Welcome, guest."
+
+[[line]]
+text = "acá pão · acá sal · acá ardë."
+translation = "Here is bread, here is salt, here is fire."
+
+[[line]]
+text = "nã falu porcë tu venu."
+translation = "You need not say why you came."
+
+[[line]]
+text = ""
+
+[[line]]
+text = "senda longa · sonu acá."
+translation = "The path was long. Sleep here."
+
+[[line]]
+text = "chea manhã · volta, venida."
+translation = "In the morning, go well, and come back around."
+
+[[line]]
+text = "ë aswen nã · nossa porta abru."
+translation = "And if you do not, our door stays open."
+
+[[line]]
+text = ""
+
+[[line]]
+text = "salva · porcë tu venu."
+translation = "Thank you, because you came."

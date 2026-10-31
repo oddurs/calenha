@@ -29,7 +29,8 @@ lang/                 the language — source of truth (TOML)
   affixes.toml        suffixes and linking vowels
   sound-changes.toml  old Calenha → modern Calenha
   lexicon/*.toml      words, one file per domain (grammar.toml: the small words)
-  phrases.toml        the language in use — every word must exist
+  phrases.toml        the language in use, by topic — every word must exist
+  texts/*.toml        poems, stories, blessings — line by line, with translations
 docs/                 prose reference: phonology, grammar
 context/              world, principles, decisions, style
 src/calenha/          the toolkit

@@ -1,0 +1,56 @@
+# the oldest story the Calenhi tell: why the redwoods remember.
+
+title = "lenda dë Miraluma"
+english = "The Story of the Redwood"
+kind = "story"
+note = """Told to children at dusk. It explains two things the Calenhi believe: that the \
+forests on land are echoes of the kelp forests in the sea, and that the oldest trees \
+remember everything. Notice how the story counts time in waves, never in years."""
+
+[[line]]
+text = "vaza · antes toda anel · Mar una."
+translation = "Long ago, before all the years, there was only the Sea."
+
+[[line]]
+text = "na Mar · algamar crescu."
+translation = "In the sea, the kelp forest grew."
+
+[[line]]
+text = "lë algamar sonhu tera."
+translation = "The kelp forest dreamed of land."
+
+[[line]]
+text = "onda onda onda · então tera."
+translation = "Wave after wave after wave, and then there was land."
+
+[[line]]
+text = "dë sonha dë algamar · Miraluma nascu."
+translation = "From the kelp forest's dream, the first redwood was born."
+
+[[line]]
+text = "lë Miraluma crescu alta · alta mais · alta mais."
+translation = "The redwood grew high, and higher, and higher."
+
+[[line]]
+text = "lë altavel volta velu na Miraluma."
+translation = "The condor wandered through it, again and again."
+
+[[line]]
+text = "lë Miraluma toda miru · onda · altavel · Calenhi."
+translation = "The redwood remembers everything: the wave, the condor, the Calenhi."
+
+[[line]]
+text = "sera porcë? · porcë Miraluma velha."
+translation = "Why? Because the redwood is old."
+
+[[line]]
+text = "aswen tu escutu folha · Miraluma falu."
+translation = "If you listen to the leaves, the redwood speaks."
+
+[[line]]
+text = "ela falu dë algamar."
+translation = "It speaks of the kelp forest."
+
+[[line]]
+text = "mi·rão dë Mar."
+translation = "It aches for the sea."

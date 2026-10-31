@@ -37,7 +37,8 @@ def test_no_link_is_broken(built):
     }
     broken = []
     for page in built.rglob("*.html"):
-        for href in re.findall(r'href="([^"]+)"', page.read_text(encoding="utf-8")):
+        markup = re.sub(r"<script.*?</script>", "", page.read_text(encoding="utf-8"), flags=re.S)
+        for href in re.findall(r'href="([^"]+)"', markup):
             if href.startswith(("http", "#")):
                 continue
             path, _, anchor = href.partition("#")
@@ -103,3 +104,27 @@ def test_the_real_documents_render(lang_path):
     for source in ["docs/grammar.md", "docs/phonology.md", "context/world.md"]:
         doc = render((Path(lang_path).parent / source).read_text(encoding="utf-8"))
         assert doc.title and "<p>" in doc.html
+
+
+def test_texts_have_pages_and_glosses(lang_path, built):
+    language = Language.load(lang_path)
+    for text in language.texts:
+        html = (built / "text" / f"{text.slug}.html").read_text(encoding="utf-8")
+        assert 'class="ilin"' in html  # word-by-word glosses
+        assert text.english in html
+
+
+def test_reader_carries_the_lexicon(lang_path, built):
+    html = (built / "reader.html").read_text(encoding="utf-8")
+    payload = re.search(r'<script type="application/json" id="lexicon">(.*?)</script>', html, re.S)
+    import json
+
+    data = json.loads(payload.group(1))
+    assert data["thalírë"]["g"] == "river"
+    assert data["velu"]["g"] == "wander"
+
+
+def test_phrases_page_groups_by_topic(built):
+    html = (built / "phrases.html").read_text(encoding="utf-8")
+    for topic in ["greetings", "the hours", "the heart", "land and sea", "sayings"]:
+        assert f">{topic}</h2>" in html

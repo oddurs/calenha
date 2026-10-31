@@ -45,8 +45,9 @@ uv run calenha serve            # preview it at http://127.0.0.1:8000
 
 `calenha build` turns the language into a small static site: a page for every word
 (with its parts, its history and its family), the roots and endings, the grammar, the
-sounds, the history of Old Calenha, the world, and a page of *unspoken* words — ones
-the generator has found that mean nothing yet. Every push to `main` publishes it to
+sounds, a phrasebook, longer texts you can read with a translation or word by word, a
+reader that glosses any line you paste in, the history of Old Calenha, the world, and a
+page of *unspoken* words — ones the generator has found that mean nothing yet. Every push to `main` publishes it to
 GitHub Pages.
 
 ## start here
