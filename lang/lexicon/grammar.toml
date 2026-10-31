@@ -1,0 +1,122 @@
+# the small words. Particles behave a little like keywords: each opens something,
+# and a breath mark (·) closes it. See docs/grammar.md.
+
+# -- the tide of time ----------------------------------------------------------
+
+[[word]]
+word = "vaza"
+gloss = "ebb: what has passed"
+pos = "particle"
+sense = "marks the past. vaza velu: wandered"
+
+[[word]]
+word = "chea"
+gloss = "flood: what is coming"
+pos = "particle"
+sense = "marks the future. chea velu: will wander"
+
+# -- shape ---------------------------------------------------------------------
+
+[[word]]
+word = "aswen"
+gloss = "if, perhaps"
+pos = "particle"
+sense = "opens a condition that lasts until the next breath"
+
+[[word]]
+word = "volta"
+gloss = "again and again; farewell"
+pos = "particle"
+sense = "turns an act into a circle. Said alone, it means: come back around"
+
+[[word]]
+word = "lë"
+gloss = "the one who"
+pos = "particle"
+sense = "names the doer, so the words around it may stand in any order"
+
+[[word]]
+word = "sera"
+gloss = "I wonder (question)"
+pos = "particle"
+sense = "opens a question. Calenha does not interrogate; it wonders"
+
+[[word]]
+word = "nã"
+gloss = "not"
+pos = "particle"
+
+[[word]]
+word = "sí"
+gloss = "yes"
+pos = "particle"
+
+[[word]]
+word = "venha"
+gloss = "welcome"
+pos = "particle"
+sense = "the greeting: be come"
+
+# -- joining -------------------------------------------------------------------
+
+[[word]]
+word = "ë"
+gloss = "and"
+pos = "particle"
+
+[[word]]
+word = "ou"
+gloss = "or"
+pos = "particle"
+
+[[word]]
+word = "na"
+gloss = "in, within"
+pos = "particle"
+
+[[word]]
+word = "dë"
+gloss = "of, from"
+pos = "particle"
+
+[[word]]
+word = "co"
+gloss = "with"
+pos = "particle"
+
+[[word]]
+word = "pra"
+gloss = "toward, for"
+pos = "particle"
+
+# -- persons -------------------------------------------------------------------
+
+[[word]]
+word = "ei"
+gloss = "I"
+pos = "pronoun"
+
+[[word]]
+word = "tu"
+gloss = "you"
+pos = "pronoun"
+
+[[word]]
+word = "ela"
+gloss = "they (one person)"
+pos = "pronoun"
+
+[[word]]
+word = "nos"
+gloss = "we"
+pos = "pronoun"
+
+[[word]]
+word = "vos"
+gloss = "you, all of you"
+pos = "pronoun"
+
+[[word]]
+word = "elas"
+gloss = "they (many)"
+pos = "pronoun"

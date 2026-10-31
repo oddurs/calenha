@@ -1,0 +1,189 @@
+# roots — the seeds words grow from.
+#
+# A root is bare: no ending, never spoken alone. Words are built by adding affixes
+# (affixes.toml) or by joining roots together. Every root should have children in
+# the lexicon; `calenha check` warns about roots no word grows from.
+#
+#   root     the bare form
+#   meaning  short, lowercase
+#   kin      where the sound was found (optional) — inspiration, not etymology
+
+# -- light & sky ---------------------------------------------------------------
+
+[[root]]
+root = "sol"
+meaning = "sun, the light of day"
+kin = "portuguese sol"
+
+[[root]]
+root = "lum"
+meaning = "glow, a light held within"
+kin = "latin lumen"
+
+[[root]]
+root = "our"
+meaning = "gold"
+kin = "portuguese ouro"
+
+[[root]]
+root = "alv"
+meaning = "first light, whiteness"
+kin = "portuguese alva"
+
+[[root]]
+root = "arc"
+meaning = "bow, curve"
+kin = "portuguese arco"
+
+[[root]]
+root = "brilh"
+meaning = "shine, glint"
+kin = "portuguese brilhar"
+
+# -- water ---------------------------------------------------------------------
+
+[[root]]
+root = "mar"
+meaning = "sea"
+kin = "portuguese mar"
+
+[[root]]
+root = "thal"
+meaning = "flow, moving water"
+kin = "greek thalassa, softened"
+
+[[root]]
+root = "ond"
+meaning = "wave, a rising"
+kin = "portuguese onda"
+
+[[root]]
+root = "alg"
+meaning = "frond, the sea's leaf"
+kin = "portuguese alga"
+
+[[root]]
+root = "nev"
+meaning = "mist, haze"
+kin = "portuguese névoa"
+
+[[root]]
+root = "chuv"
+meaning = "rain"
+kin = "portuguese chuva"
+
+# -- land & growing ------------------------------------------------------------
+
+[[root]]
+root = "pedr"
+meaning = "stone"
+kin = "portuguese pedra"
+
+[[root]]
+root = "alt"
+meaning = "high"
+kin = "portuguese alto"
+
+[[root]]
+root = "lonj"
+meaning = "far"
+kin = "portuguese longe"
+
+[[root]]
+root = "flor"
+meaning = "flower, opening"
+kin = "portuguese flor"
+
+[[root]]
+root = "ard"
+meaning = "burn"
+kin = "portuguese arder"
+
+[[root]]
+root = "vent"
+meaning = "wind"
+kin = "portuguese vento"
+
+[[root]]
+root = "bris"
+meaning = "breeze, a light wind"
+kin = "portuguese brisa"
+
+# -- the inner life ------------------------------------------------------------
+
+[[root]]
+root = "mir"
+meaning = "memory, remembering"
+kin = "invented; latin mirari, to wonder"
+
+[[root]]
+root = "cal"
+meaning = "stillness, calm"
+kin = "portuguese calma"
+
+[[root]]
+root = "alm"
+meaning = "soul"
+kin = "portuguese alma"
+
+[[root]]
+root = "am"
+meaning = "love"
+kin = "portuguese amar"
+
+[[root]]
+root = "cor"
+meaning = "heart"
+kin = "latin cor"
+
+[[root]]
+root = "sonh"
+meaning = "dream"
+kin = "portuguese sonho"
+
+[[root]]
+root = "cant"
+meaning = "song"
+kin = "portuguese cantar"
+
+[[root]]
+root = "beij"
+meaning = "kiss"
+kin = "portuguese beijar"
+
+# -- moving & doing ------------------------------------------------------------
+
+[[root]]
+root = "vel"
+meaning = "wander, go without destination"
+kin = "invented"
+
+[[root]]
+root = "ven"
+meaning = "come, arrive"
+kin = "portuguese vir, venha"
+
+[[root]]
+root = "and"
+meaning = "walk"
+kin = "portuguese andar"
+
+[[root]]
+root = "olh"
+meaning = "eye, looking"
+kin = "portuguese olhar"
+
+[[root]]
+root = "escut"
+meaning = "listen"
+kin = "portuguese escutar"
+
+[[root]]
+root = "esper"
+meaning = "wait, hope — one act in Calenha"
+kin = "portuguese esperar, which means both"
+
+[[root]]
+root = "dor"
+meaning = "give, offer"
+kin = "portuguese doar"

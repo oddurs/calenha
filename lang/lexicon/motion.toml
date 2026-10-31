@@ -1,0 +1,83 @@
+# verbs — every one ends in -u, and every one is an invitation.
+# there is no way to command in Calenha. velu is "come wander", never "go".
+
+[[word]]
+word = "velu"
+gloss = "to wander"
+pos = "verb"
+from = ["vel", "-u"]
+
+[[word]]
+word = "velunda"
+gloss = "a wandering"
+pos = "noun"
+from = ["vel", "-unda"]
+sense = "a going-about with nowhere to be; the coast road taken slowly"
+
+[[word]]
+word = "venu"
+gloss = "to come, to arrive"
+pos = "verb"
+from = ["ven", "-u"]
+
+[[word]]
+word = "andu"
+gloss = "to walk"
+pos = "verb"
+from = ["and", "-u"]
+
+[[word]]
+word = "miru"
+gloss = "to remember"
+pos = "verb"
+from = ["mir", "-u"]
+
+[[word]]
+word = "calu"
+gloss = "to be still, to rest"
+pos = "verb"
+from = ["cal", "-u"]
+
+[[word]]
+word = "amu"
+gloss = "to love"
+pos = "verb"
+from = ["am", "-u"]
+
+[[word]]
+word = "sonhu"
+gloss = "to dream"
+pos = "verb"
+from = ["sonh", "-u"]
+
+[[word]]
+word = "cantu"
+gloss = "to sing"
+pos = "verb"
+from = ["cant", "-u"]
+
+[[word]]
+word = "olhu"
+gloss = "to look, to watch"
+pos = "verb"
+from = ["olh", "-u"]
+sense = "to watch with attention; how a Calenhi waits for the fog to lift"
+
+[[word]]
+word = "escutu"
+gloss = "to listen"
+pos = "verb"
+from = ["escut", "-u"]
+
+[[word]]
+word = "esperu"
+gloss = "to wait, to hope"
+pos = "verb"
+from = ["esper", "-u"]
+sense = "one act, not two: to wait is already to hope"
+
+[[word]]
+word = "doru"
+gloss = "to give, to offer"
+pos = "verb"
+from = ["dor", "-u"]

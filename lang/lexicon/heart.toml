@@ -1,0 +1,83 @@
+# the inner life: memory, feeling, people.
+
+[[word]]
+word = "calenha"
+gloss = "the language"
+pos = "name"
+from = ["cal", "-enha"]
+old = "kalenia"
+sense = "the calm speech"
+
+[[word]]
+word = "calenhi"
+gloss = "the people"
+pos = "name"
+from = ["calenha", "-i"]
+sense = "the calm ones; those who speak Calenha"
+
+[[word]]
+word = "mirão"
+gloss = "memory"
+pos = "noun"
+from = ["mir", "-ão"]
+old = "miran"
+sense = "a remembering held inside. Broken by a breath, mi·rão, it is a memory that hurts to hold"
+
+[[word]]
+word = "calma"
+gloss = "peace"
+pos = "noun"
+from = ["cal", "-ma"]
+
+[[word]]
+word = "alma"
+gloss = "soul"
+pos = "noun"
+from = ["alm", "-a"]
+
+[[word]]
+word = "corão"
+gloss = "heart"
+pos = "noun"
+from = ["cor", "-ão"]
+
+[[word]]
+word = "amor"
+gloss = "love"
+pos = "noun"
+from = ["am", "-or"]
+
+[[word]]
+word = "sonha"
+gloss = "dream"
+pos = "noun"
+from = ["sonh", "-a"]
+
+[[word]]
+word = "canta"
+gloss = "song"
+pos = "noun"
+from = ["cant", "-a"]
+
+[[word]]
+word = "lenda"
+gloss = "story"
+pos = "noun"
+sense = "a story old enough that no one owns it"
+
+[[word]]
+word = "alegra"
+gloss = "joy"
+pos = "noun"
+
+[[word]]
+word = "saudadë"
+gloss = "longing"
+pos = "noun"
+sense = "kept whole from the old tongue: the sweet ache for what is far, or gone, or not yet"
+
+[[word]]
+word = "amiga"
+gloss = "friend"
+pos = "noun"
+sense = "Calenha has no grammatical gender; every friend is amiga"

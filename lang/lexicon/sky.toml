@@ -1,0 +1,92 @@
+# the sky, the light, and the air.
+
+[[word]]
+word = "sol"
+gloss = "sun"
+pos = "noun"
+from = ["sol"]
+
+[[word]]
+word = "solenha"
+gloss = "dappled light"
+pos = "noun"
+from = ["sol", "-enha"]
+old = "solenia"
+sense = "the speech of light; sun spoken through leaves"
+
+[[word]]
+word = "ouro"
+gloss = "gold"
+pos = "noun"
+from = ["our", "-o"]
+
+[[word]]
+word = "solouro"
+gloss = "golden hour"
+pos = "noun"
+from = ["sol", "ouro"]
+sense = "sun-gold; the hour everyone stops for"
+
+[[word]]
+word = "luma"
+gloss = "glow"
+pos = "noun"
+from = ["lum", "-a"]
+
+[[word]]
+word = "alva"
+gloss = "dawn"
+pos = "noun"
+from = ["alv", "-a"]
+
+[[word]]
+word = "lusca"
+gloss = "dusk"
+pos = "noun"
+sense = "the hour when the sea and the sky become one colour"
+
+[[word]]
+word = "lunë"
+gloss = "moon"
+pos = "noun"
+
+[[word]]
+word = "luarë"
+gloss = "moonlight"
+pos = "noun"
+
+[[word]]
+word = "estrë"
+gloss = "star"
+pos = "noun"
+
+[[word]]
+word = "célë"
+gloss = "sky"
+pos = "noun"
+sense = "said slowly, with a long vowel, because it is so wide"
+
+[[word]]
+word = "arcosol"
+gloss = "rainbow"
+pos = "noun"
+from = ["arc", "-o-", "sol"]
+sense = "the sun's bow"
+
+[[word]]
+word = "brisa"
+gloss = "breeze"
+pos = "noun"
+from = ["bris", "-a"]
+
+[[word]]
+word = "ventë"
+gloss = "wind"
+pos = "noun"
+from = ["vent", "-ë"]
+
+[[word]]
+word = "brilhu"
+gloss = "to shine"
+pos = "verb"
+from = ["brilh", "-u"]

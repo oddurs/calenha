@@ -1,0 +1,53 @@
+# the ones who share the land.
+
+[[word]]
+word = "altavel"
+gloss = "condor"
+pos = "noun"
+from = ["alt", "-a-", "vel"]
+sense = "the high wanderer"
+
+[[word]]
+word = "beijaflor"
+gloss = "hummingbird"
+pos = "noun"
+from = ["beij", "-a-", "flor"]
+sense = "flower-kisser"
+
+[[word]]
+word = "lontra"
+gloss = "sea otter"
+pos = "noun"
+sense = "the one who sleeps holding hands, so as not to drift"
+
+[[word]]
+word = "baleia"
+gloss = "whale"
+pos = "noun"
+
+[[word]]
+word = "gaivota"
+gloss = "gull"
+pos = "noun"
+
+[[word]]
+word = "ursa"
+gloss = "bear"
+pos = "noun"
+sense = "the great grey bear of the hills; written Ursa, as an elder"
+
+[[word]]
+word = "corsa"
+gloss = "deer"
+pos = "noun"
+
+[[word]]
+word = "coruja"
+gloss = "owl"
+pos = "noun"
+
+[[word]]
+word = "borboleta"
+gloss = "butterfly"
+pos = "noun"
+sense = "the orange ones that winter in the groves, hanging like leaves"

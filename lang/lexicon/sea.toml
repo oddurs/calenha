@@ -1,0 +1,83 @@
+# the sea, and all water that moves.
+# the Calenhi read their land from the sea inward, so the dictionary starts here.
+
+[[word]]
+word = "mar"
+gloss = "sea"
+pos = "noun"
+from = ["mar"]
+sense = "the first thing; written Mar when it is spoken of as an elder"
+
+[[word]]
+word = "marë"
+gloss = "tide"
+pos = "noun"
+from = ["mar", "-ë"]
+sense = "the rhythm of the sea; the clock the Calenhi keep"
+
+[[word]]
+word = "onda"
+gloss = "wave"
+pos = "noun"
+from = ["ond", "-a"]
+
+[[word]]
+word = "algamar"
+gloss = "kelp forest"
+pos = "noun"
+from = ["alg", "-a-", "mar"]
+sense = "the frond-sea; the first forest, of which the trees on land are an echo"
+
+[[word]]
+word = "thalírë"
+gloss = "river"
+pos = "noun"
+from = ["thal", "-írë"]
+old = "thaliire"
+sense = "the ever-flowing; a river is named for what it does"
+
+[[word]]
+word = "lagoa"
+gloss = "lagoon, still water"
+pos = "noun"
+
+[[word]]
+word = "fontë"
+gloss = "spring of water"
+pos = "noun"
+
+[[word]]
+word = "espuma"
+gloss = "sea foam"
+pos = "noun"
+
+[[word]]
+word = "areia"
+gloss = "sand"
+pos = "noun"
+
+[[word]]
+word = "concha"
+gloss = "shell"
+pos = "noun"
+sense = "held to the ear, a shell is said to keep the sea's memory"
+
+[[word]]
+word = "nevoã"
+gloss = "sea fog"
+pos = "noun"
+from = ["nev", "-oã"]
+old = "nevona"
+sense = "the marine layer; a gentle visitor, greeted each morning"
+
+[[word]]
+word = "chuva"
+gloss = "rain"
+pos = "noun"
+from = ["chuv", "-a"]
+
+[[word]]
+word = "thalu"
+gloss = "to flow"
+pos = "verb"
+from = ["thal", "-u"]

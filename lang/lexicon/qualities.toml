@@ -1,0 +1,59 @@
+# qualities — adjectives usually follow what they describe: thalírë lenta, a slow river.
+
+[[word]]
+word = "alta"
+gloss = "high"
+pos = "adjective"
+from = ["alt", "-a"]
+
+[[word]]
+word = "lenta"
+gloss = "slow"
+pos = "adjective"
+sense = "a compliment"
+
+[[word]]
+word = "clara"
+gloss = "clear, bright"
+pos = "adjective"
+
+[[word]]
+word = "funda"
+gloss = "deep"
+pos = "adjective"
+
+[[word]]
+word = "morna"
+gloss = "warm"
+pos = "adjective"
+
+[[word]]
+word = "fria"
+gloss = "cool"
+pos = "adjective"
+
+[[word]]
+word = "doura"
+gloss = "golden"
+pos = "adjective"
+
+[[word]]
+word = "suavë"
+gloss = "gentle"
+pos = "adjective"
+
+[[word]]
+word = "bela"
+gloss = "beautiful"
+pos = "adjective"
+
+[[word]]
+word = "velha"
+gloss = "old"
+pos = "adjective"
+sense = "said with respect; to be old is to have been remembered a long time"
+
+[[word]]
+word = "nova"
+gloss = "new"
+pos = "adjective"
