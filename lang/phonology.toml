@@ -69,3 +69,25 @@ clusters = ["pl", "pr", "bl", "br", "tr", "dr", "cl", "cr", "gl", "gr", "fl", "f
 codas = ["m", "n", "l", "r", "s"]
 # consonants that may end a word — soft ones only
 final_codas = ["n", "l", "r", "s"]
+
+# taste — how the word generator judges beauty. Each tier is a family of sounds
+# and how much the ear welcomes it. Tune these and `calenha gen` changes its ear.
+[euphony]
+# how often each plain vowel is chosen
+vowel_weights = { a = 4, e = 3, i = 2, o = 3, u = 1 }
+
+[euphony.tiers.flow]      # the liquids and hums — the language's water
+weight = 1.0
+sounds = ["l", "lh", "r", "m", "n", "nh"]
+
+[euphony.tiers.breath]    # soft air
+weight = 0.85
+sounds = ["v", "s", "th", "w"]
+
+[euphony.tiers.hush]      # beautiful, but lovelier when rare
+weight = 0.6
+sounds = ["ch", "j", "z"]
+
+[euphony.tiers.spice]     # the stops; a little goes a long way
+weight = 0.4
+sounds = ["p", "b", "t", "d", "c", "g", "f"]
