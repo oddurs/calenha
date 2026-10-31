@@ -1,12 +1,10 @@
-"""Turning the language into things people read: a Markdown dictionary and a web page."""
+"""Turning the language into things people read: shared helpers and the Markdown dictionary."""
 
 from __future__ import annotations
 
 import html
 import unicodedata
-from datetime import date
-from importlib import resources
-from string import Template
+from collections.abc import Callable
 
 from .language import Entry, Language
 from .phonology import BREATH, PhonologyError, Word
@@ -129,8 +127,13 @@ def stressed_html(word: Word, shown: str | None = None) -> str:
     )
 
 
-def line_html(text: str, language: Language) -> str:
-    """A line of Calenha with stress marked on every word and breaths set apart."""
+def line_html(
+    text: str, language: Language, href: Callable[[str], str | None] | None = None
+) -> str:
+    """A line of Calenha with stress marked on every word and breaths set apart.
+
+    ``href`` may give a link for each word (by its plain spelling).
+    """
     out = []
     for i, token in enumerate(text.split()):
         core = token.strip(".,;:!?")
@@ -144,98 +147,10 @@ def line_html(text: str, language: Language) -> str:
             except PhonologyError:
                 piece = html.escape(token)
             piece = piece.replace(BREATH, f'<span class="breath">{BREATH}</span>')
+            target = href(words_of(core)[0]) if href else None
+            if target:
+                piece = f'<a class="wl" href="{html.escape(target)}">{piece}</a>'
         else:
             piece = html.escape(token)
         out.append(f'<span class="w" style="--i:{i}">{piece}</span>')
     return " ".join(out)
-
-
-def entry_html(entry: Entry, language: Language) -> str:
-    word = language.phonology.syllabify(entry.word)
-    search = " ".join(
-        filter(None, [entry.word, collate(entry.word), entry.gloss, entry.sense or ""])
-    ).lower()
-    bits = [
-        f'<article class="entry" data-domain="{entry.domain}" '
-        f'data-search="{html.escape(search)}" id="w-{html.escape(collate(entry.word))}">',
-        f'<h4 class="hw" lang="x-calenha">{stressed_html(word)}</h4>',
-        '<div class="body">',
-        f'<p class="gloss">{html.escape(entry.gloss)}'
-        f' <span class="pos">{POS_LABEL[entry.pos]}</span></p>',
-        f'<p class="ipa">/{html.escape(word.ipa())}/</p>',
-    ]
-    if entry.sense:
-        bits.append(f'<p class="sense">{html.escape(entry.sense)}</p>')
-    if entry.parts or entry.old:
-        ety = []
-        if entry.parts:
-            ety.append(
-                " + ".join(
-                    f'<span lang="x-calenha">{html.escape(p)}</span>'
-                    + (f" <i>{html.escape(m)}</i>" if m else "")
-                    for p, m in explain_parts(entry, language)
-                )
-            )
-        if entry.old:
-            ety.append(f'from older <span lang="x-calenha">*{html.escape(entry.old)}</span>')
-        bits.append(f'<p class="ety">{"; ".join(ety)}</p>')
-    bits += ["</div>", "</article>"]
-    return "\n".join(bits)
-
-
-def page(language: Language, *, standalone: bool = True) -> str:
-    """The dictionary as one self-contained page.
-
-    ``standalone`` wraps it in a full document; without it, the page is a fragment
-    for hosts that supply their own document shell.
-    """
-    counts = stats(language)
-    featured = next((p for p in language.phrases if p.featured), language.phrases[0])
-
-    phrases = "\n".join(
-        f'<li><p class="cal" lang="x-calenha">{line_html(p.text, language)}</p>'
-        f'<p class="lit">{html.escape(p.literal)}</p>'
-        f'<p class="tr">{html.escape(p.translation)}</p></li>'
-        for p in language.phrases
-        if p is not featured
-    )
-
-    groups, letter, current = [], "", []
-    for entry in sorted_entries(language):
-        initial = collate(entry.word)[0]
-        if initial != letter and current:
-            groups.append((letter, current))
-            current = []
-        letter = initial
-        current.append(entry_html(entry, language))
-    groups.append((letter, current))
-    dictionary = "\n".join(
-        f'<section class="letter" data-letter="{lt}"><h3>{lt}</h3>{"".join(items)}</section>'
-        for lt, items in groups
-    )
-
-    domains = "\n".join(
-        f'<button type="button" class="chip" id="d-{d}" data-domain="{d}" aria-pressed="false">'
-        f"{d}</button>"
-        for d in language.domains
-    )
-
-    template = Template(resources.files("calenha").joinpath("page.html").read_text("utf-8"))
-    body = template.substitute(
-        hero=line_html(featured.text, language),
-        hero_translation=html.escape(featured.translation),
-        phrases=phrases,
-        dictionary=dictionary,
-        domains=domains,
-        words=counts["words"],
-        roots=counts["roots"],
-        built=date.today().isoformat(),
-    )
-    if not standalone:
-        return body
-    head, _, content = body.partition("<!-- body -->")
-    return (
-        '<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
-        '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
-        f"{head.strip()}\n</head>\n<body>{content.rstrip()}\n</body>\n</html>\n"
-    )
