@@ -3,7 +3,7 @@ import pytest
 from calenha.cli import main
 from calenha.generate import euphony, generate
 from calenha.language import Language
-from calenha.render import collate, markdown, page, stressed_html
+from calenha.render import collate, line_html, markdown, stressed_html
 from calenha.sound_change import evolve
 
 
@@ -82,16 +82,10 @@ def test_markdown_lists_every_word(language):
         assert f"**{entry.word}**" in text
 
 
-def test_page_is_complete(language):
-    html = page(language)
-    assert html.startswith("<!doctype html>")
-    assert "<title>Calenha Dictionary</title>" in html
-    assert html.count('class="entry"') == len(language.entries)
-    assert "$" not in html.split("<script>")[0]  # every template slot was filled
-
-
-def test_fragment_has_no_document_shell(language):
-    assert not page(language, standalone=False).lstrip().startswith("<!doctype")
+def test_line_links_words(language):
+    html = line_html("velu zuma", language, href=lambda w: f"word/{w}.html")
+    assert 'href="word/velu.html"' in html
+    assert 'href="word/zuma.html"' in html  # the line renderer trusts its linker
 
 
 # -- the command line -------------------------------------------------------------
@@ -110,4 +104,5 @@ def test_cli_read_flags_unknown_words(lang_path, capsys):
 def test_cli_build(lang_path, tmp_path):
     assert main(["--lang", str(lang_path), "build", "--out", str(tmp_path)]) == 0
     assert (tmp_path / "index.html").exists()
+    assert (tmp_path / "word" / "thalire.html").exists()
     assert (tmp_path / "dictionary.md").exists()
