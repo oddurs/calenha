@@ -27,11 +27,24 @@ jobs:
           python-version: "3.12"
       - run: uv sync --locked
       - run: uv run calenha check
-      - run: uv run calenha build --out dist
-      - uses: actions/configure-pages@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: web/.nvmrc
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - name: install
+        working-directory: web
+        run: npm ci
+      - id: pages
+        uses: actions/configure-pages@v5
+      - name: build
+        working-directory: web
+        run: npm run build
+        env:
+          BASE_PATH: ${{ steps.pages.outputs.base_path }}
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: web/build
 
   deploy:
     needs: build

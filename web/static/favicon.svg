@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+	<style>
+		.bg { fill: #e8ece7 } .ink { fill: #1e2d29 } .gold { fill: #9a6208 }
+		@media (prefers-color-scheme: dark) { .bg { fill: #131d1b } .ink { fill: #dce3dd } .gold { fill: #e2a64a } }
+	</style>
+	<rect class="bg" width="64" height="64" rx="14" />
+	<path class="ink" d="M41.5 22.6c-2.4-2.3-5.4-3.4-9-3.4-7.6 0-13 5.6-13 13.1S24.9 45.4 32.6 45.4c3.6 0 6.7-1.2 9.2-3.6l-2.6-2.9c-1.8 1.7-3.9 2.6-6.4 2.6-5.2 0-8.8-3.9-8.8-9.2s3.5-9.1 8.6-9.1c2.4 0 4.4.8 6.2 2.4z" />
+	<rect class="gold" x="20" y="50" width="24" height="2.6" rx="1.3" />
+</svg>
