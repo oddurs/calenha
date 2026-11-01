@@ -1,0 +1,44 @@
+{
+	"name": "calenha-web",
+	"private": true,
+	"version": "0.1.0",
+	"description": "The Calenha website: the dictionary, grammar, texts and reader for the calm speech.",
+	"type": "module",
+	"engines": {
+		"node": ">=20.19"
+	},
+	"scripts": {
+		"data": "cd .. && uv run calenha export",
+		"predev": "npm run data",
+		"dev": "vite dev",
+		"prebuild": "npm run data",
+		"build": "vite build",
+		"preview": "vite preview",
+		"prepare": "svelte-kit sync || echo ''",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --fail-on-warnings",
+		"lint": "prettier --check . && eslint .",
+		"format": "prettier --write .",
+		"test": "vitest run"
+	},
+	"devDependencies": {
+		"@eslint/js": "^9.39.5",
+		"@sveltejs/adapter-static": "^3.0.10",
+		"@sveltejs/kit": "^2.70.3",
+		"@sveltejs/vite-plugin-svelte": "^6.2.4",
+		"eslint": "^9.39.5",
+		"eslint-config-prettier": "^10.1.8",
+		"eslint-plugin-svelte": "^3.23.1",
+		"globals": "^16.5.0",
+		"prettier": "^3.9.10",
+		"prettier-plugin-svelte": "^3.5.2",
+		"svelte": "^5.57.3",
+		"svelte-check": "^4.7.7",
+		"typescript": "^5.9.3",
+		"typescript-eslint": "^8.72.1",
+		"vite": "^7.3.7",
+		"vitest": "^3.2.7"
+	},
+	"dependencies": {
+		"@fontsource/gentium-book-plus": "^5.3.0"
+	}
+}
