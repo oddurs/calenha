@@ -37,18 +37,23 @@ uv run calenha show thalírë     # tha·LÍ·rë  /θa.ˈliː.ɾe/  river, from
 uv run calenha read "aswen tu velu · solenha."
 uv run calenha gen -n 12        # coin new words, the most euphonious first
 uv run calenha evolve kalenia   # *kalenia → calenia → calenha
-uv run calenha build            # the website, into dist/
-uv run calenha serve            # preview it at http://127.0.0.1:8000
+uv run calenha export           # the language as JSON, for the website
 ```
 
 ## the website
 
-`calenha build` turns the language into a small static site: a page for every word
-(with its parts, its history and its family), the roots and endings, the grammar, the
-sounds, a phrasebook, longer texts you can read with a translation or word by word, a
-reader that glosses any line you paste in, the history of Old Calenha, the world, and a
-page of *unspoken* words — ones the generator has found that mean nothing yet. Every push to `main` publishes it to
-GitHub Pages.
+`web/` is a SvelteKit site, prerendered to static pages from the exported language:
+a page for every word (its parts, its history, its family), the roots and endings,
+the grammar, the sounds, a phrasebook, texts you can read with a translation or word by
+word, a reader that glosses any line you type, the history of Old Calenha, the world,
+and *unspoken* words the generator has found that mean nothing yet. Its design system
+is documented on the site itself, at `/design`.
+
+```sh
+cd web && npm install && npm run dev
+```
+
+Every push to `main` publishes it to GitHub Pages.
 
 ## start here
 

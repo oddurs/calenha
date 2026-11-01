@@ -10,8 +10,9 @@ the sound of Portuguese with a touch of English, the typographic freedom of
 E.E. Cummings, and a very light seasoning of programming-language ideas.
 
 The language is kept as **data** in `lang/`. A small Python toolkit in
-`src/calenha/` reads that data, holds it to its own rules, and builds a readable
-dictionary.
+`src/calenha/` reads that data, holds it to its own rules, and exports it as JSON.
+The website in `web/` (SvelteKit) presents that export. Python owns the rules;
+Svelte never re-implements them.
 
 Before changing anything about the language itself, read:
 
@@ -33,9 +34,14 @@ lang/                 the language — source of truth (TOML)
   texts/*.toml        poems, stories, blessings — line by line, with translations
 docs/                 prose reference: phonology, grammar
 context/              world, principles, decisions, style
-src/calenha/          the toolkit
-  site/               the website: page builders, site.css, a tiny markdown renderer
-tests/                tests, including checks over the real lexicon and every site link
+src/calenha/          the toolkit — check, gen, evolve, export
+  export.py           the data contract the website reads
+tests/                python tests, including checks over the real lexicon
+web/                  the website (SvelteKit, Svelte 5, static)
+  src/lib/design/     design tokens (primitive → semantic → component) and base styles
+  src/lib/components/ ui/, language/ and layout/ components
+  src/lib/language/   the contract's types, lookups and the line reader
+  src/routes/         one folder per page; /design documents the system
 dist/                 generated — never edit by hand
 ```
 
@@ -47,10 +53,16 @@ uv run calenha check          # validate the whole language
 uv run calenha show thalírë   # syllables, stress, IPA, etymology
 uv run calenha gen -n 12      # coin candidate words, ranked by euphony
 uv run calenha evolve kalenia # run an old form through the sound changes
-uv run calenha build          # write the website and dist/dictionary.md
-uv run calenha serve          # build, then preview at http://127.0.0.1:8000
+uv run calenha export         # write web/src/lib/data/language.json
+uv run calenha build          # export, and write dist/dictionary.md
 uv run pytest                 # tests
 uv run ruff check . && uv run ruff format --check .
+
+cd web
+npm install
+npm run dev                   # exports the language, then serves the site
+npm run lint && npm run check && npm test
+npm run build                 # prerenders every page into web/build
 ```
 
 `calenha check` must pass before any commit that touches `lang/`.
@@ -62,8 +74,12 @@ uv run ruff check . && uv run ruff format --check .
 - Read new words aloud. If a word is correct but not beautiful, it is not done.
 - Record any change to the language's rules in `context/decisions.md`.
 - Keep the toolkit dependency-free at runtime.
-- The website is generated from `lang/`, `docs/` and `context/`. To change a page's
-  words, change its source; to change how pages look, change `src/calenha/site/`.
+- The website reads only `language.json`. To change a page's words, change its
+  source in `lang/`, `docs/` or `context/`; to change how it looks, change `web/`.
+- If the export's shape changes, change `src/calenha/export.py` and
+  `web/src/lib/language/types.ts` together, and bump `SCHEMA` in both.
+- Components use semantic and component tokens only, never primitives or raw
+  colours. The one bright colour is `--color-stress`; keep it that way.
 - Every push to `main` deploys the site to GitHub Pages (`.github/workflows/pages.yml`).
 
 ## git
