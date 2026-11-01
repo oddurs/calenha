@@ -1,6 +1,6 @@
 /*
  * calenha — base
- * Element defaults, built only from semantic tokens. Components style themselves.
+ * Element defaults from semantic tokens only. Components style themselves.
  */
 
 *,
@@ -12,17 +12,33 @@
 html {
 	-webkit-text-size-adjust: 100%;
 	text-size-adjust: 100%;
+	background: var(--color-page);
 }
 
 body {
 	margin: 0;
 	background: var(--color-page);
 	color: var(--color-ink);
-	font-family: var(--font-body);
+	font-family: var(--font-english);
 	font-size: var(--step-0);
 	line-height: var(--leading-body);
 	-webkit-font-smoothing: antialiased;
 	text-rendering: optimizeLegibility;
+	font-kerning: normal;
+	transition:
+		background-color 600ms var(--ease-tide),
+		color 600ms var(--ease-tide);
+}
+
+/* the two voices: anything tagged as Calenha speaks in the calligraphic serif */
+:lang(x-calenha) {
+	font-family: var(--font-calenha);
+	font-feature-settings: 'kern', 'liga', 'onum';
+}
+
+/* and English inside Calenha returns to the sans */
+:lang(en) {
+	font-family: var(--font-english);
 }
 
 p,
@@ -32,6 +48,8 @@ h3,
 h4,
 ul,
 ol,
+dl,
+dd,
 figure,
 blockquote {
 	margin: 0;
@@ -41,34 +59,56 @@ h1,
 h2,
 h3,
 h4 {
-	font-weight: 400;
+	font-weight: 500;
 	line-height: var(--leading-tight);
 	text-wrap: balance;
 }
 
+h1:lang(x-calenha),
+h2:lang(x-calenha),
+h3:lang(x-calenha) {
+	font-weight: 400;
+}
+
+p {
+	text-wrap: pretty;
+}
+
 a {
 	color: inherit;
-	text-decoration-color: var(--color-rule);
-	text-underline-offset: 0.2em;
+	text-decoration-line: underline;
+	text-decoration-color: color-mix(in srgb, currentColor 30%, transparent);
+	text-decoration-thickness: 1px;
+	text-underline-offset: 0.22em;
 	transition: text-decoration-color var(--duration-quick) var(--ease-tide);
 }
 
 a:hover {
-	text-decoration-color: var(--color-accent);
+	text-decoration-color: currentColor;
 }
 
 :focus-visible {
-	outline: 2px solid var(--color-focus);
-	outline-offset: 2px;
+	outline: 2px solid var(--color-accent);
+	outline-offset: 3px;
 	border-radius: var(--radius-s);
+}
+
+::selection {
+	background: color-mix(in srgb, var(--color-beat) 28%, transparent);
 }
 
 code {
 	font-family: var(--font-code);
-	font-size: 0.82em;
+	font-size: 0.8em;
 	background: var(--color-surface);
-	padding: 0.05em 0.35em;
+	padding: 0.1em 0.35em;
 	border-radius: var(--radius-s);
+}
+
+.ipa {
+	font-family: var(--font-ipa);
+	font-size: 0.86em;
+	letter-spacing: 0.01em;
 }
 
 img,
@@ -92,12 +132,41 @@ svg {
 	border: 0;
 }
 
-/* one wrapper sets the page measure and the side gutters */
-.wrap {
-	max-width: var(--measure-page);
+/* the page frame: one wrapper sets the measure and the side gutters */
+.frame {
+	max-width: var(--page-max);
 	margin-inline: auto;
-	padding-left: var(--gutter);
+	padding-left: var(--gutter-start);
 	padding-right: var(--gutter-end);
+}
+
+/*
+ * the margin layout: a narrow column for labels, letters and notes beside a main
+ * column — the way a field notebook or a glossed manuscript is laid out
+ */
+.margined {
+	display: grid;
+	grid-template-columns: var(--margin-column) minmax(0, 1fr);
+	column-gap: var(--space-l);
+}
+
+.margined > .margin {
+	grid-column: 1;
+}
+
+.margined > .main {
+	grid-column: 2;
+	min-width: 0;
+}
+
+@media (max-width: 760px) {
+	.margined {
+		grid-template-columns: minmax(0, 1fr);
+	}
+	.margined > .margin,
+	.margined > .main {
+		grid-column: 1;
+	}
 }
 
 @media (prefers-reduced-motion: reduce) {
