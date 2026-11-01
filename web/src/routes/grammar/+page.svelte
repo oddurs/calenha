@@ -3,4 +3,4 @@
 	import { language } from '$lib/language';
 </script>
 
-<DocPage doc={language.docs.grammar} />
+<DocPage doc={language.docs.grammar} english="grammar" calenha="como" />

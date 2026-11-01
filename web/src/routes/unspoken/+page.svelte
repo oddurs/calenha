@@ -13,14 +13,20 @@
 
 <Meta title="unspoken" description="Unclaimed Calenha words, waiting for a meaning." />
 
-<PageHeader title="unspoken" lede="Words the ear has found that mean nothing yet." />
+<PageHeader
+	english="unspoken"
+	calenha="semë"
+	lede="Words the ear has found that mean nothing yet. Seeds."
+/>
 
-<p class="note">
-	Each of these obeys every rule of the language, and each was chosen by the generator for how it
-	sounds. None of them has a meaning. To give one, add it to the lexicon in
-	<code>lang/lexicon/</code> and it will appear in the dictionary. More can be found with
-	<code>calenha gen</code>.
-</p>
+<div class="margined">
+	<p class="main note">
+		Each of these obeys every rule of the language, and each was chosen by the word generator for
+		how it sounds. None of them has a meaning. To give one, add it to the lexicon in
+		<code>lang/lexicon/</code>, and it will grow into the dictionary. More can be found with
+		<code>calenha gen</code>.
+	</p>
+</div>
 
 {#each groups as g (g.id)}
 	<Section id={g.id} title={g.title}>
@@ -29,7 +35,9 @@
 				<li>
 					<span class="w"><Word shape={w} /></span>
 					<span class="ipa">/{w.ipa}/</span>
-					{#if w.echoes.length}<span class="echo">near {w.echoes.join(', ')}</span>{/if}
+					{#if w.echoes.length}<span class="echo"
+							>sounds like <span lang="x-calenha">{w.echoes.join(', ')}</span></span
+						>{/if}
 				</li>
 			{/each}
 		</ul>
@@ -38,24 +46,30 @@
 
 <style>
 	.note {
-		max-width: 40em;
+		max-width: var(--text-max);
 	}
 	.unspoken {
 		list-style: none;
 		padding: 0;
 		display: grid;
-		gap: var(--space-m) var(--space-l);
-		grid-template-columns: repeat(auto-fill, minmax(min(100%, 13rem), 1fr));
+		gap: var(--space-l) var(--space-l);
+		grid-template-columns: repeat(auto-fill, minmax(min(100%, 12rem), 1fr));
 	}
 	li {
 		display: grid;
+		gap: 0.1rem;
+		align-content: start;
 	}
 	.w {
-		font-size: var(--step-2);
+		font-size: var(--step-3);
+		line-height: 1.2;
 	}
 	.ipa,
 	.echo {
 		font-size: var(--step--1);
 		color: var(--color-ink-muted);
+	}
+	.ipa {
+		font-family: var(--font-ipa);
 	}
 </style>

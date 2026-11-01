@@ -12,106 +12,136 @@
 <Meta title="history" description="How Old Calenha softened into the modern language." />
 
 <PageHeader
-	title="history"
+	english="history"
+	calenha="vaza"
 	lede="Old Calenha was harder: k, doubled vowels, plain endings. Over many generations the sea air wore it smooth."
 />
 
-<p class="note">
-	These are the changes, in the order they happened. Order matters: the long vowels formed before n
-	and l softened, which is why *thaliire became thalírë and not thalhirë.
-</p>
+<div class="margined">
+	<p class="main lead">
+		These are the changes, in the order they happened, and order matters. The long vowels formed
+		before <i>n</i> and <i>l</i> softened, which is why <span lang="x-calenha">*thaliire</span>
+		became <span lang="x-calenha">thalírë</span>, and not <span lang="x-calenha">thalhirë</span>.
+	</p>
+</div>
 
 <ol class="changes">
 	{#each language.changes as c (c.index)}
-		<li id="c-{c.index}">
-			<h2>{c.name}</h2>
-			<p class="rule" lang="x-calenha">
-				{c.rule.map(([a, b]) => `${a} → ${b}`).join(', ')}
-				{#if c.environment}<span class="where">{c.environment}</span>{/if}
-			</p>
-			<!-- eslint-disable-next-line svelte/no-at-html-tags -- trusted: from the repo's own data -->
-			<p>{@html c.note}</p>
-			{#if c.shaped.length}
-				<div class="shaped"><span>shaped</span> <WordList slugs={c.shaped} gloss={false} /></div>
-			{/if}
+		<li id="c-{c.index}" class="margined">
+			<p class="margin n">{c.index}</p>
+			<div class="main body">
+				<h2>{c.name}</h2>
+				<p class="rule">
+					<span lang="x-calenha">{c.rule.map(([a, b]) => `${a} → ${b}`).join(', ')}</span>
+					{#if c.environment}<span class="where">{c.environment}</span>{/if}
+				</p>
+				<!-- eslint-disable-next-line svelte/no-at-html-tags -- trusted: from the repo's own data -->
+				<p class="why">{@html c.note}</p>
+				{#if c.shaped.length}
+					<div class="shaped">
+						<span>it shaped</span><WordList slugs={c.shaped} gloss={false} />
+					</div>
+				{/if}
+			</div>
 		</li>
 	{/each}
 </ol>
 
 <Section id="old" title="every old form">
-	<div class="table">
-		<table>
-			<thead><tr><th>old</th><th>now</th><th>meaning</th></tr></thead>
-			<tbody>
-				{#each old as e (e.slug)}
-					<tr>
-						<td lang="x-calenha">*{e.old}</td>
-						<td><a href={wordHref(e.slug)} lang="x-calenha">{e.word}</a></td>
-						<td>{e.gloss}</td>
-					</tr>
-				{/each}
-			</tbody>
-		</table>
-	</div>
+	<ul class="old">
+		{#each old as e (e.slug)}
+			<li>
+				<span class="then" lang="x-calenha">*{e.old}</span>
+				<a class="now" href={wordHref(e.slug)} lang="x-calenha">{e.word}</a>
+				<span class="g">{e.short}</span>
+			</li>
+		{/each}
+	</ul>
 </Section>
 
 <style>
-	.note {
-		max-width: 40em;
+	.lead {
+		max-width: var(--text-max);
+		padding-bottom: var(--space-l);
+	}
+	.lead [lang] {
+		font-size: 1.12em;
 	}
 	.changes {
 		list-style: none;
 		padding: 0;
-		margin-top: var(--space-m);
-		border-top: var(--rule);
-		counter-reset: change;
 	}
 	.changes li {
 		padding-block: var(--space-m);
-		border-bottom: var(--rule);
-		display: grid;
-		gap: var(--space-2xs);
+		border-top: var(--rule);
 		scroll-margin-top: var(--space-m);
+	}
+	.changes li:target {
+		background: linear-gradient(to right, var(--color-surface), transparent);
+	}
+	/* the changes are a sequence, so they are numbered */
+	.n {
+		font-family: var(--font-calenha);
+		font-size: var(--step-3);
+		line-height: 1;
+		color: var(--color-ink-muted);
+		font-variant-numeric: oldstyle-nums;
+	}
+	.body {
+		display: grid;
+		gap: var(--space-3xs);
+		max-width: var(--text-max);
 	}
 	h2 {
 		font-size: var(--step-1);
 	}
-	/* the changes are a sequence, so they are numbered */
-	h2::before {
-		counter-increment: change;
-		content: counter(change) '. ';
-		color: var(--color-ink-muted);
-	}
 	.rule {
-		font-size: var(--step-1);
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		gap: 0 var(--space-s);
+	}
+	.rule [lang] {
+		font-size: var(--step-2);
 		color: var(--color-accent);
 	}
 	.where {
 		color: var(--color-ink-muted);
 	}
+	.why :global([lang]) {
+		font-size: 1.12em;
+	}
 	.shaped {
 		display: flex;
 		flex-wrap: wrap;
-		gap: var(--space-3xs) var(--space-xs);
+		align-items: baseline;
+		gap: var(--space-3xs) var(--space-s);
+		padding-top: var(--space-2xs);
 		color: var(--color-ink-muted);
 		font-size: var(--step--1);
 	}
-	.table {
-		overflow-x: auto;
+	.old {
+		list-style: none;
+		padding: 0;
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+		gap: var(--space-2xs) var(--space-l);
 	}
-	table {
-		border-collapse: collapse;
-		width: 100%;
+	.old li {
+		display: grid;
+		grid-template-columns: auto auto 1fr;
+		align-items: baseline;
+		gap: 0.6em;
 	}
-	th {
-		text-align: left;
-		font-weight: 400;
-		font-style: italic;
+	.then {
 		color: var(--color-ink-muted);
 	}
-	th,
-	td {
-		padding: 0.45rem 0.9rem 0.45rem 0;
-		border-bottom: var(--rule);
+	.now {
+		font-size: 1.15em;
+	}
+	.g {
+		color: var(--color-ink-muted);
+		font-size: var(--step--1);
+		font-style: italic;
 	}
 </style>
