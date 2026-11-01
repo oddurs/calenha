@@ -11,19 +11,22 @@ calenha build            write the dictionary to dist/
 from __future__ import annotations
 
 import argparse
+import json
 import sys
 import textwrap
 from pathlib import Path
 
 from . import __version__
+from .export import export
 from .generate import euphony, generate
 from .language import Language
 from .paths import lang_dir
 from .phonology import BREATH, PhonologyError, normalize
 from .render import POS_LABEL, explain_parts, markdown, stats
-from .site import build as build_site
 from .sound_change import evolve
 from .validate import ERROR, check, words_of
+
+DATA = Path("web/src/lib/data/language.json")
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -52,12 +55,11 @@ def main(argv: list[str] | None = None) -> int:
     p = sub.add_parser("evolve", help="run old forms through the sound changes")
     p.add_argument("forms", nargs="+")
 
-    p = sub.add_parser("build", help="write the website and dictionary.md")
-    p.add_argument("--out", type=Path, default=Path("dist"))
+    p = sub.add_parser("export", help="write the language as JSON for the website")
+    p.add_argument("--out", type=Path, help=f"default: {DATA}")
 
-    p = sub.add_parser("serve", help="build, then preview the website locally")
+    p = sub.add_parser("build", help="export, and write dist/dictionary.md")
     p.add_argument("--out", type=Path, default=Path("dist"))
-    p.add_argument("--port", type=int, default=8000)
 
     args = parser.parse_args(argv)
     lang = (args.lang or lang_dir()).resolve()
@@ -156,32 +158,28 @@ def cmd_evolve(language: Language, args: argparse.Namespace) -> int:
     return 0
 
 
-def cmd_build(language: Language, args: argparse.Namespace) -> int:
-    issues = [i for i in check(language) if i.level == ERROR]
-    if issues:
+def cmd_export(language: Language, args: argparse.Namespace) -> int:
+    if issues := [i for i in check(language) if i.level == ERROR]:
         for issue in issues:
             print(issue)
-        print("\nnot building: run `calenha check` and mend these first")
+        print("\nnot exporting: run `calenha check` and mend these first")
         return 1
-    args.out.mkdir(parents=True, exist_ok=True)
-    (args.out / "dictionary.md").write_text(markdown(language), encoding="utf-8")
-    pages = build_site(language, args.root, args.out)
-    print(f"wrote {len(pages)} files to {args.out}/ — open {args.out / 'index.html'}")
+    out = args.out or args.root / DATA
+    out.parent.mkdir(parents=True, exist_ok=True)
+    data = export(language, args.root)
+    out.write_text(json.dumps(data, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    print(f"wrote {out} — {data['meta']['counts']['words']} words")
     return 0
 
 
-def cmd_serve(language: Language, args: argparse.Namespace) -> int:
-    import contextlib
-    import functools
-    import http.server
-
-    if status := cmd_build(language, args):
+def cmd_build(language: Language, args: argparse.Namespace) -> int:
+    dist = args.out
+    args.out = None
+    if status := cmd_export(language, args):
         return status
-    handler = functools.partial(http.server.SimpleHTTPRequestHandler, directory=str(args.out))
-    with http.server.ThreadingHTTPServer(("127.0.0.1", args.port), handler) as server:
-        print(f"serving on http://127.0.0.1:{args.port} — ctrl-c to stop")
-        with contextlib.suppress(KeyboardInterrupt):
-            server.serve_forever()
+    dist.mkdir(parents=True, exist_ok=True)
+    (dist / "dictionary.md").write_text(markdown(language), encoding="utf-8")
+    print(f"wrote {dist / 'dictionary.md'} — the website builds from web/ (npm run build)")
     return 0
 
 
@@ -191,8 +189,8 @@ COMMANDS = {
     "read": cmd_read,
     "gen": cmd_gen,
     "evolve": cmd_evolve,
+    "export": cmd_export,
     "build": cmd_build,
-    "serve": cmd_serve,
 }
 
 

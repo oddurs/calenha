@@ -101,8 +101,7 @@ def test_cli_read_flags_unknown_words(lang_path, capsys):
     assert "zuma" in capsys.readouterr().out
 
 
-def test_cli_build(lang_path, tmp_path):
+def test_cli_build_writes_the_markdown_dictionary(lang_path, tmp_path, monkeypatch):
+    monkeypatch.setattr("calenha.cli.DATA", tmp_path / "language.json")
     assert main(["--lang", str(lang_path), "build", "--out", str(tmp_path)]) == 0
-    assert (tmp_path / "index.html").exists()
-    assert (tmp_path / "word" / "thalire.html").exists()
     assert (tmp_path / "dictionary.md").exists()

@@ -33,6 +33,5 @@ select = ["E", "F", "I", "B", "UP", "SIM", "RUF"]
 ignore = ["RUF001", "RUF002", "RUF003"]  # the language is full of ë, ã and ·
 
 [tool.ruff.lint.per-file-ignores]
-# html templates read better unwrapped
-"src/calenha/site/*.py" = ["E501"]
-"tests/test_site.py" = ["E501"]
+# the data contract reads better unwrapped
+"src/calenha/export.py" = ["E501"]

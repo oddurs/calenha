@@ -137,4 +137,5 @@ def _table(rows: list[str], link: Callable[[str], str | None] | None) -> str:
     tbody = "".join(
         "<tr>" + "".join(f"<td>{inline(c, link)}</td>" for c in row) + "</tr>" for row in body
     )
-    return f'<div class="table"><table><thead><tr>{thead}</tr></thead><tbody>{tbody}</tbody></table></div>'
+    table = f"<table><thead><tr>{thead}</tr></thead><tbody>{tbody}</tbody></table>"
+    return f'<div class="table">{table}</div>'
