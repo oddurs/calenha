@@ -33,17 +33,22 @@ stress, IPA, glosses, families, histories. Change the contract in
 
 ## design system
 
-- `src/lib/design/tokens.css` — every value, in three layers: **primitives** (the
-  palette and scales, named for Solmara), **semantic** roles (the only layer that
-  changes with the theme), and **component** decisions.
-- `src/lib/design/base.css` — element defaults, from semantic tokens only.
-- `src/lib/design/tokens.ts` — names and notes for each token, for the docs page.
-- `src/lib/components/` — `ui/` (Chip, ChipGroup, SearchField, PageHeader, Section,
-  Facts, LinkList, Prose, DocPage, ThemeToggle), `language/` (Word, Line,
-  Interlinear, EntryRow, PhraseList, WordList), `layout/` (header, footer, meta).
+- `src/lib/design/tokens.css` — every value, in three layers: **primitives** (fog,
+  pacific, sage, rose, amber, poppy), **semantic** roles set once per **hour**, and
+  **component** decisions recomputed wherever an hour is set.
+- `src/lib/design/hours.ts` — the five hours and `pickHour`, whose source is inlined
+  into every page by `src/hooks.server.ts` so the hour is set before first paint.
+- `src/lib/design/base.css` — element defaults, the two voices keyed to `lang`, and
+  the margin grid (`.margined` with `.margin` and `.main`).
+- `src/lib/sections.ts` — the four sections and their pages, each named in Calenha.
+- `src/lib/components/` — `ui/` (Tabs, Button, SearchField, PageHeader, Section,
+  Facts, LinkList, Prose, DocPage), `language/` (Word, Line, Interlinear, EntryRow,
+  PhraseList, WordList), `layout/` (SiteHeader, SectionNav, SiteFooter,
+  HourControl, Horizon, Meta, SkipLink).
 
 The rules: components use semantic and component tokens, never primitives or raw
-colours. Siblings are spaced with `gap`. The only bright colour is
-`--color-stress`, and it only ever marks a stressed syllable.
+colours. Calenha is tagged `lang="x-calenha"` and the type follows. Siblings are
+spaced with `gap`. The only bright colour is the beat, and it only marks stress.
 
-All of it is documented live at `/design`.
+All of it is documented live at `/design`, where each hour is shown as the real
+token set applied to a part of the page.

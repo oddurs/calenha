@@ -130,7 +130,7 @@ comes from the export, so there is still one set of rules.
 mirrored by `web/src/lib/language/types.ts`, and the site refuses to build against a
 schema it doesn't know. The export is generated, never committed.
 
-### D-027 · the design system
+### D-027 · the design system (superseded by D-029–D-033)
 Tokens in three layers: primitives (named for Solmara: fog, kelp, tide, granite,
 poppy), semantic roles (page, ink, accent, rule, stress), and component tokens.
 Only the semantic layer changes between light and dark. Components use semantic and
@@ -142,3 +142,44 @@ self-hosted. The system documents itself at `/design`, reading live token values
 SvelteKit 2, Vite 7, TypeScript 5, ESLint 9, Vitest 3 — the latest of each major
 line rather than the newest majors (SvelteKit 3, Vite 8, TypeScript 7), which were
 weeks old when the site was built. Move up deliberately, one major at a time.
+
+### D-029 · the page keeps Calenha time
+Light and dark are replaced by five hours: *alva* (dawn), *nevoã* (morning fog, the
+default), *tardë* (afternoon), *solouro* (golden hour) and *noitë* (night). Each is a
+full set of semantic tokens selected by `data-hour`, which may sit on any element,
+so a part of a page can be shown at another hour. Following the sun, the hour comes
+from the viewer's clock; a dark system preference always means night, and a light
+preference is never plunged into night (the fog holds). Anyone can choose an hour
+at the foot of a page. The hour is set before first paint by a script whose source
+is the same `pickHour` function the tests cover. Every text/ground pair was checked:
+ink on page is above 13:1 in every hour, muted text above 4.5:1.
+
+### D-030 · two voices
+Calenha is always set in Alegreya, a calligraphic serif; English in Alegreya Sans,
+its humanist sibling. The rule is keyed to the `lang` attribute (`x-calenha`), so
+the type itself says which language you are reading. The export tags emphasised
+Calenha inside the documents for the same reason. IPA is set in Noto Serif:
+Fontsource's Gentium subsets omit the IPA block, so the earlier site had been
+falling back glyph by glyph for ɲ, ʎ, ɾ and friends.
+
+### D-031 · the beat
+Stress is marked by a short poppy bar spanning the stressed syllable, just above
+its tallest letter: the one bright mark in the system, and it means only stress. It
+shows wherever a word stands alone (headwords, titles, word pages, the reader,
+word-by-word reading) and waits for a pointer in running lines, where marks would
+crowd the writing. The earlier gold underline read as a link.
+
+### D-032 · structure: sections, the margin, two names
+Four sections (dictionary, language, reading, world), each with its pages as tabs.
+Every page is laid out on a margin grid: a narrow column for labels, letters and
+notes beside a column for reading, like a glossed manuscript or a field notebook.
+Every page is named twice: in English in the margin, to find your way, and in
+Calenha across the page, to read — and the Calenha title is a real word that links
+to its own entry. Texts are set as a facing translation, the convention of a
+bilingual edition.
+
+### D-033 · the horizon
+The home page opens on sky over sea in the hour's colours, with the sun, or the
+moon, where the hour puts it: high in the fog, setting into the sea at golden hour.
+Its one gradient is the light gathering at the horizon. It is the site's single
+orchestrated moment, with the opening line arriving word by word.
