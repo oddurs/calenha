@@ -1,153 +1,296 @@
 /*
  * calenha — design tokens
  *
- * Three layers. Components use only the semantic and component layers; the
- * primitives exist to be referred to, never used directly in a component.
+ * Three layers. Components use only the semantic and component layers.
  *
- *   1. primitives   the raw palette and scales, named for things in Solmara
- *   2. semantic     roles: page, ink, accent, stress… — these change with the theme
- *   3. component    decisions particular to one component, built from the above
+ *   1 · primitives   raw palette and scales, named for things in Solmara
+ *   2 · semantic     roles — page, ink, accent, beat, sky, sea… One set per HOUR.
+ *   3 · component    decisions particular to a component, built from roles
  *
- * The one colour that speaks is poppy gold, under each stressed syllable, so every
- * page teaches the language's music as it is read. Everything else stays quiet.
- * Documented, with live values, at /design.
+ * The page keeps Calenha time. In place of light and dark there are five hours,
+ * each a semantic set selected by `data-hour` (see hours.ts): alva (dawn),
+ * nevoa (morning fog, the default), tarde (afternoon), solouro (golden hour) and
+ * noite (night, which is also dark mode). Hours may be set on any element, so a
+ * part of a page can be shown at another hour — /design does this.
+ *
+ * Two voices: Calenha is always set in Alegreya, a calligraphic serif; English in
+ * Alegreya Sans, its humanist sibling. The rule is keyed to the lang attribute
+ * (base.css), so the type itself says which language you are reading. IPA is set
+ * in Noto Serif, which carries every symbol the transcriptions use.
+ *
+ * The one bright colour is the beat: a short poppy bar over a stressed syllable.
+ * Every contrast pair below is checked; see context/decisions.md D-029.
  */
 
 :root {
-	/* ── 1 · primitives ─────────────────────────────────────────────────────── */
+	/* ── 1 · primitives ────────────────────────────────────────────────────────── */
 
-	/* fog — cool greys with a sage bias, the colour of a morning on the coast */
-	--fog-50: #f1f4f0;
-	--fog-100: #e8ece7;
-	--fog-200: #dde3dd;
-	--fog-300: #c8d0ca;
-	--fog-400: #a9b3ad;
+	/* fog — the marine layer */
+	--fog-50: #f0f3f3;
+	--fog-100: #edf0f0;
+	--fog-200: #e1e6e7;
+	--fog-300: #cdd5d8;
+	--fog-400: #9db0b7;
 
-	/* kelp — the deep greens that carry text */
-	--kelp-950: #131d1b;
-	--kelp-900: #1a2725;
-	--kelp-850: #1e2d29;
-	--kelp-800: #2b3a36;
+	/* pacific — the sea in its depths */
+	--pacific-950: #09131a;
+	--pacific-900: #0d171d;
+	--pacific-850: #11212a;
+	--pacific-800: #11232f;
+	--pacific-700: #14232b;
+	--pacific-650: #1d4152;
+	--pacific-600: #22495b;
+	--pacific-500: #285b6e;
+	--pacific-450: #2c6274;
+	--pacific-200: #8ebbcb;
 
-	/* tide — sea under cloud */
-	--tide-600: #3d6964;
-	--tide-300: #8db9b2;
+	/* sage — the grey scrub of the dry hills */
+	--sage-100: #eff0ea;
+	--sage-200: #e4e6dd;
+	--sage-300: #d3d7cc;
+	--sage-700: #545e58;
+	--sage-900: #17221f;
 
-	/* granite — muted text */
-	--granite-600: #5c6862;
-	--granite-300: #94a39c;
+	/* rose — first light */
+	--rose-100: #f3efee;
+	--rose-200: #eae3e2;
+	--rose-300: #ded4d3;
+	--rose-400: #f1d8d1;
+
+	/* amber — solouro, the golden hour */
+	--amber-100: #f5ecdf;
+	--amber-200: #eee1cd;
+	--amber-300: #e3d3bc;
+	--amber-400: #f7d69a;
+	--amber-500: #efbe6b;
+	--amber-900: #25190e;
 
 	/* poppy — ourinha, the only bright thing */
-	--poppy-700: #9a6208;
-	--poppy-400: #e2a64a;
+	--poppy-700: #a9460a;
+	--poppy-600: #bc4f0d;
+	--poppy-300: #f29a4e;
 
-	--white-fog: #dce3dd;
+	/* granite and slate — muted text */
+	--granite-600: #53636a;
+	--granite-300: #94a5ac;
+	--slate-700: #1d2330;
+	--slate-600: #38577a;
+	--slate-500: #5e5a66;
 
 	/* type */
-	--font-serif:
-		'Gentium Book Plus', 'Gentium Plus', 'Charis SIL', 'Iowan Old Style', Georgia, serif;
-	--font-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+	--font-calenha: 'Alegreya Variable', 'Alegreya', 'Iowan Old Style', Georgia, serif;
+	--font-english:
+		'Alegreya Sans', 'Gill Sans', 'Optima', 'Segoe UI', system-ui, -apple-system, sans-serif;
+	--font-ipa: 'Noto Serif', 'Charis SIL', 'Doulos SIL', 'Gentium Plus', serif;
+	--font-code: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
 
-	/* a 1.2 scale on an 18px base; the display steps grow with the viewport */
-	--step--2: 0.78rem;
+	/* a 1.25 scale on an 18px base; display steps grow with the screen */
+	--step--2: 0.8rem;
 	--step--1: 0.9rem;
 	--step-0: 1.125rem;
 	--step-1: 1.35rem;
-	--step-2: 1.6rem;
-	--step-3: 1.95rem;
-	--step-4: clamp(2.2rem, 6vw, 3.5rem);
-	--step-5: clamp(2.4rem, 7.5vw, 4.25rem);
-	--step-6: clamp(3.25rem, 13vw, 6rem);
+	--step-2: 1.7rem;
+	--step-3: 2.2rem;
+	--step-4: clamp(2.4rem, 5.5vw, 3.4rem);
+	--step-5: clamp(2.5rem, 7.2vw, 5rem);
+	--step-6: clamp(3.4rem, 14vw, 7.5rem);
 
-	--leading-tight: 1.1;
+	--leading-display: 1.05;
+	--leading-tight: 1.15;
 	--leading-snug: 1.3;
-	--leading-body: 1.6;
+	--leading-body: 1.55;
 
-	/* space — a modular scale; layouts use gap, never margins between siblings */
+	/* space — one modular scale; siblings are spaced with gap, never margins */
 	--space-3xs: 0.2rem;
 	--space-2xs: 0.4rem;
 	--space-xs: 0.6rem;
 	--space-s: 0.9rem;
-	--space-m: 1.25rem;
-	--space-l: 2rem;
-	--space-xl: 3rem;
-	--space-2xl: 4.5rem;
+	--space-m: 1.35rem;
+	--space-l: 2.1rem;
+	--space-xl: 3.25rem;
+	--space-2xl: 5rem;
 
 	--radius-s: 3px;
-	--radius-m: 5px;
-	--radius-pill: 999px;
+	--radius-m: 6px;
 
 	/* motion — slow, like everything else here */
 	--ease-tide: cubic-bezier(0.33, 0, 0.2, 1);
-	--duration-quick: 140ms;
+	--duration-quick: 160ms;
 	--duration-breath: 1400ms;
 	--stagger-breath: 220ms;
 
-	/* ── 2 · semantic (light) ───────────────────────────────────────────────── */
+	/* layout */
+	--page-max: 74rem;
+	--margin-column: 10.5rem;
+	--text-max: 38rem;
+	--gutter-start: max(20px, env(safe-area-inset-left, 0px));
+	--gutter-end: max(20px, env(safe-area-inset-right, 0px));
+}
 
+/* ── 2 · semantic — one set per hour ─────────────────────────────────────────── */
+
+/* nevoa, morning fog: the default, and what shows before the hour is known */
+:root,
+[data-hour='nevoa'] {
 	--color-page: var(--fog-100);
 	--color-surface: var(--fog-200);
-	--color-ink: var(--kelp-850);
+	--color-ink: var(--pacific-850);
 	--color-ink-muted: var(--granite-600);
-	--color-accent: var(--tide-600);
+	--color-accent: var(--pacific-500);
 	--color-rule: var(--fog-300);
-	--color-stress: var(--poppy-700);
-	--color-focus: var(--tide-600);
-	--color-inverse-ink: var(--fog-100);
-	--color-inverse-page: var(--kelp-850);
-
-	--font-body: var(--font-serif);
-	--font-code: var(--font-mono);
-
-	--measure-page: 48rem;
-	--measure-text: 34em;
-	--gutter: max(16px, env(safe-area-inset-left, 0px));
-	--gutter-end: max(16px, env(safe-area-inset-right, 0px));
-
-	/* ── 3 · component ──────────────────────────────────────────────────────── */
-
-	--stress-color: var(--color-stress);
-	--stress-rule: 1px;
-	--stress-offset: 0.2em;
-
-	--chip-border: var(--color-rule);
-	--chip-border-hover: var(--color-ink-muted);
-	--chip-pressed-bg: var(--color-ink);
-	--chip-pressed-ink: var(--color-page);
-
-	--rule: 1px solid var(--color-rule);
-
+	--color-beat: var(--poppy-600);
+	--color-sky: #dde4e6;
+	--color-on-sky: var(--pacific-850);
+	--color-sea: var(--fog-400);
+	--color-on-sea: var(--pacific-850);
+	--color-haze: var(--fog-50);
+	/* the sun behind the fog: high, faint, softened */
+	--sun-color: #fbfcfb;
+	--sun-size: 7rem;
+	--sun-x: 72%;
+	--sun-y: 22%;
+	--sun-opacity: 0.55;
+	--sun-blur: 14px;
 	color-scheme: light;
 }
 
-/* ── 2 · semantic (dark) — only roles change, never components ──────────────── */
+[data-hour='alva'] {
+	--color-page: var(--rose-100);
+	--color-surface: var(--rose-200);
+	--color-ink: var(--slate-700);
+	--color-ink-muted: var(--slate-500);
+	--color-accent: var(--slate-600);
+	--color-rule: var(--rose-300);
+	--color-beat: var(--poppy-600);
+	--color-sky: var(--rose-400);
+	--color-on-sky: var(--slate-700);
+	--color-sea: #aebdcb;
+	--color-on-sea: var(--slate-700);
+	--color-haze: #f8eae3;
+	/* just risen, rose-gold, low over the water */
+	--sun-color: #f7c6a3;
+	--sun-size: 6.5rem;
+	--sun-x: 18%;
+	--sun-y: 78%;
+	--sun-opacity: 0.95;
+	--sun-blur: 2px;
+	color-scheme: light;
+}
 
+[data-hour='tarde'] {
+	--color-page: var(--sage-100);
+	--color-surface: var(--sage-200);
+	--color-ink: var(--sage-900);
+	--color-ink-muted: var(--sage-700);
+	--color-accent: #25616b;
+	--color-rule: var(--sage-300);
+	--color-beat: var(--poppy-600);
+	--color-sky: #cfe2ea;
+	--color-on-sky: var(--pacific-850);
+	--color-sea: var(--pacific-450);
+	--color-on-sea: #f1f6f7;
+	--color-haze: #e6eff0;
+	/* high and small, white with warmth */
+	--sun-color: #fdf6e6;
+	--sun-size: 4.5rem;
+	--sun-x: 78%;
+	--sun-y: 16%;
+	--sun-opacity: 1;
+	--sun-blur: 1px;
+	color-scheme: light;
+}
+
+[data-hour='solouro'] {
+	--color-page: var(--amber-100);
+	--color-surface: var(--amber-200);
+	--color-ink: var(--amber-900);
+	--color-ink-muted: #685645;
+	--color-accent: var(--pacific-600);
+	--color-rule: var(--amber-300);
+	--color-beat: var(--poppy-700);
+	--color-sky: var(--amber-500);
+	--color-on-sky: var(--amber-900);
+	--color-sea: var(--pacific-650);
+	--color-on-sea: #f8e8cb;
+	--color-haze: var(--amber-400);
+	/* large, setting, cut by the horizon */
+	--sun-color: #f6a64c;
+	--sun-size: 11rem;
+	--sun-x: 70%;
+	--sun-y: 100%;
+	--sun-opacity: 1;
+	--sun-blur: 0px;
+	color-scheme: light;
+}
+
+[data-hour='noite'] {
+	--color-page: var(--pacific-900);
+	--color-surface: var(--pacific-700);
+	--color-ink: #dce5e8;
+	--color-ink-muted: var(--granite-300);
+	--color-accent: var(--pacific-200);
+	--color-rule: #22343d;
+	--color-beat: var(--poppy-300);
+	--color-sky: var(--pacific-800);
+	--color-on-sky: #dce5e8;
+	--color-sea: var(--pacific-950);
+	--color-on-sea: #c3d2d7;
+	--color-haze: #1a3242;
+	/* the moon, lunë */
+	--sun-color: #e6edef;
+	--sun-size: 3.25rem;
+	--sun-x: 80%;
+	--sun-y: 20%;
+	--sun-opacity: 0.92;
+	--sun-blur: 0px;
+	color-scheme: dark;
+}
+
+/* before the script runs (or without it), a dark system means night */
 @media (prefers-color-scheme: dark) {
-	:root:not([data-theme='light']) {
-		--color-page: var(--kelp-950);
-		--color-surface: var(--kelp-900);
-		--color-ink: var(--white-fog);
+	:root:not([data-hour]) {
+		--color-page: var(--pacific-900);
+		--color-surface: var(--pacific-700);
+		--color-ink: #dce5e8;
 		--color-ink-muted: var(--granite-300);
-		--color-accent: var(--tide-300);
-		--color-rule: var(--kelp-800);
-		--color-stress: var(--poppy-400);
-		--color-focus: var(--tide-300);
-		--color-inverse-ink: var(--kelp-950);
-		--color-inverse-page: var(--white-fog);
+		--color-accent: var(--pacific-200);
+		--color-rule: #22343d;
+		--color-beat: var(--poppy-300);
+		--color-sky: var(--pacific-800);
+		--color-on-sky: #dce5e8;
+		--color-sea: var(--pacific-950);
+		--color-on-sea: #c3d2d7;
+		--color-haze: #1a3242;
+		--sun-color: #e6edef;
+		--sun-size: 3.25rem;
+		--sun-x: 80%;
+		--sun-y: 20%;
+		--sun-opacity: 0.92;
+		--sun-blur: 0px;
 		color-scheme: dark;
 	}
 }
 
-:root[data-theme='dark'] {
-	--color-page: var(--kelp-950);
-	--color-surface: var(--kelp-900);
-	--color-ink: var(--white-fog);
-	--color-ink-muted: var(--granite-300);
-	--color-accent: var(--tide-300);
-	--color-rule: var(--kelp-800);
-	--color-stress: var(--poppy-400);
-	--color-focus: var(--tide-300);
-	--color-inverse-ink: var(--kelp-950);
-	--color-inverse-page: var(--white-fog);
-	color-scheme: dark;
+/* ── 3 · component — declared wherever an hour is, so they follow it ──────────── */
+
+:root,
+[data-hour] {
+	--beat-color: var(--color-beat);
+	--beat-thickness: max(2px, 0.04em);
+	--beat-inset: 0.05em;
+	/* how far below the top of the line box the bar sits; tuned to Alegreya's metrics */
+	--beat-drop: 0.2em;
+
+	--rule: 1px solid var(--color-rule);
+
+	--tab-ink: var(--color-ink-muted);
+	--tab-ink-current: var(--color-ink);
+	--tab-mark: var(--color-accent);
+
+	--field-line: var(--color-ink-muted);
+	--field-line-focus: var(--color-accent);
+
+	--horizon-sky: var(--color-sky);
+	--horizon-sea: var(--color-sea);
+	--horizon-haze: var(--color-haze);
 }

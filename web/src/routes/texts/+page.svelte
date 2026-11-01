@@ -6,13 +6,15 @@
 	import { textHref } from '$lib/links';
 
 	const items = language.texts.map((t) => ({
-		label: t.title,
 		href: textHref(t.slug),
-		note: `${t.english}, a ${t.kind}`,
-		lang: 'x-calenha'
+		calenha: t.title,
+		english: t.english,
+		note: `a ${t.kind}, ${t.lines.filter((l) => l.text.trim()).length} lines`
 	}));
 </script>
 
 <Meta title="texts" description="Poems, stories and blessings in Calenha." />
-<PageHeader title="texts" lede="Longer pieces of Calenha, to be read slowly and aloud." />
-<LinkList {items} />
+
+<PageHeader english="texts" calenha="lenda" lede="Longer pieces, to be read slowly and aloud." />
+
+<div class="margined"><div class="main"><LinkList {items} /></div></div>

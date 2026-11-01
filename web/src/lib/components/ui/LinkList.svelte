@@ -1,13 +1,13 @@
 <!--
   @component
-  Hairline rows that each lead somewhere, with a name and a short note.
+  A list of places to go: a Calenha name, its English, and a line about it.
 -->
 <script lang="ts">
 	interface Item {
-		label: string;
 		href: string;
+		calenha: string;
+		english: string;
 		note: string;
-		lang?: string;
 	}
 
 	let { items }: { items: Item[] } = $props();
@@ -17,8 +17,9 @@
 	{#each items as item (item.href)}
 		<li>
 			<a href={item.href}>
-				<b lang={item.lang}>{item.label}</b>
-				<span>{item.note}</span>
+				<span class="cal" lang="x-calenha">{item.calenha}</span>
+				<span class="en">{item.english}</span>
+				<span class="note">{item.note}</span>
 			</a>
 		</li>
 	{/each}
@@ -28,34 +29,42 @@
 	.links {
 		list-style: none;
 		padding: 0;
-		border-top: var(--rule);
 	}
 	li {
+		border-top: var(--rule);
+	}
+	li:last-child {
 		border-bottom: var(--rule);
 	}
 	a {
 		display: grid;
-		grid-template-columns: minmax(0, 9rem) minmax(0, 1fr);
-		gap: var(--space-3xs) var(--space-m);
-		padding-block: var(--space-s);
+		grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+		grid-template-areas: 'cal en' 'cal note';
+		gap: 0 var(--space-l);
+		padding-block: var(--space-m);
 		text-decoration: none;
 	}
-	b {
-		font-weight: 400;
-		font-size: var(--step-1);
-		color: var(--color-accent);
+	.cal {
+		grid-area: cal;
+		font-size: var(--step-4);
+		line-height: var(--leading-display);
 	}
-	a:hover b {
-		text-decoration: underline;
-		text-decoration-color: var(--color-accent);
+	.en {
+		grid-area: en;
+		font-weight: 500;
+		align-self: end;
 	}
-	span {
+	.note {
+		grid-area: note;
 		color: var(--color-ink-muted);
-		align-self: center;
+	}
+	a:hover .cal {
+		color: var(--color-accent);
 	}
 	@media (max-width: 560px) {
 		a {
 			grid-template-columns: minmax(0, 1fr);
+			grid-template-areas: 'cal' 'en' 'note';
 		}
 	}
 </style>

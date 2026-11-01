@@ -38,7 +38,7 @@ src/calenha/          the toolkit — check, gen, evolve, export
   export.py           the data contract the website reads
 tests/                python tests, including checks over the real lexicon
 web/                  the website (SvelteKit, Svelte 5, static)
-  src/lib/design/     design tokens (primitive → semantic → component) and base styles
+  src/lib/design/     tokens (primitive → semantic per hour → component), hours, base styles
   src/lib/components/ ui/, language/ and layout/ components
   src/lib/language/   the contract's types, lookups and the line reader
   src/routes/         one folder per page; /design documents the system
@@ -79,7 +79,10 @@ npm run build                 # prerenders every page into web/build
 - If the export's shape changes, change `src/calenha/export.py` and
   `web/src/lib/language/types.ts` together, and bump `SCHEMA` in both.
 - Components use semantic and component tokens only, never primitives or raw
-  colours. The one bright colour is `--color-stress`; keep it that way.
+  colours. The one bright colour is `--color-beat`, and it only marks stress.
+- Themes are hours (`data-hour`), not light and dark. A new colour role must be set
+  in every hour, and checked for contrast in each.
+- Tag Calenha with `lang="x-calenha"`; the serif follows. English stays in the sans.
 - Every push to `main` deploys the site to GitHub Pages (`.github/workflows/pages.yml`).
 
 ## git

@@ -1,6 +1,6 @@
 /**
  * Documentation for the design tokens. Values live only in tokens.css; this file
- * names and explains them so the /design page can show each one, live.
+ * names and explains them so /design can show each one, live.
  */
 
 export interface TokenDoc {
@@ -8,51 +8,79 @@ export interface TokenDoc {
 	note: string;
 }
 
-export const colours: { layer: string; tokens: TokenDoc[] }[] = [
+/** semantic colour roles — each hour sets every one of them */
+export const roles: TokenDoc[] = [
+	{ name: '--color-page', note: 'the ground of every page' },
+	{ name: '--color-surface', note: 'fields, code, the footer' },
+	{ name: '--color-ink', note: 'text' },
+	{ name: '--color-ink-muted', note: 'notes, labels, glosses' },
+	{ name: '--color-accent', note: 'the current place, letters, roots' },
+	{ name: '--color-rule', note: 'hairlines' },
+	{ name: '--color-beat', note: 'the stressed syllable, and nothing else' },
+	{ name: '--color-sky', note: 'above the horizon' },
+	{ name: '--color-haze', note: 'light gathered at the horizon' },
+	{ name: '--color-sea', note: 'below the horizon' }
+];
+
+export const primitives: { family: string; note: string; tokens: string[] }[] = [
 	{
-		layer: 'semantic',
+		family: 'fog',
+		note: 'the marine layer',
+		tokens: ['--fog-50', '--fog-100', '--fog-200', '--fog-300', '--fog-400']
+	},
+	{
+		family: 'pacific',
+		note: 'the sea in its depths',
 		tokens: [
-			{ name: '--color-page', note: 'the ground of every page — morning fog' },
-			{ name: '--color-surface', note: 'a thicker fog, for fields and code' },
-			{ name: '--color-ink', note: 'text — kelp' },
-			{ name: '--color-ink-muted', note: 'secondary text — granite' },
-			{ name: '--color-accent', note: 'headings and links — sea under cloud' },
-			{ name: '--color-rule', note: 'hairlines — the horizon' },
-			{ name: '--color-stress', note: 'the only bright thing: the stressed syllable' }
+			'--pacific-200',
+			'--pacific-450',
+			'--pacific-500',
+			'--pacific-600',
+			'--pacific-650',
+			'--pacific-800',
+			'--pacific-850',
+			'--pacific-900',
+			'--pacific-950'
 		]
 	},
 	{
-		layer: 'primitive',
+		family: 'sage',
+		note: 'the grey scrub of the dry hills',
+		tokens: ['--sage-100', '--sage-200', '--sage-300', '--sage-700', '--sage-900']
+	},
+	{
+		family: 'rose',
+		note: 'first light',
+		tokens: ['--rose-100', '--rose-200', '--rose-300', '--rose-400']
+	},
+	{
+		family: 'amber',
+		note: 'the golden hour',
 		tokens: [
-			{ name: '--fog-50', note: '' },
-			{ name: '--fog-100', note: '' },
-			{ name: '--fog-200', note: '' },
-			{ name: '--fog-300', note: '' },
-			{ name: '--fog-400', note: '' },
-			{ name: '--kelp-950', note: '' },
-			{ name: '--kelp-900', note: '' },
-			{ name: '--kelp-850', note: '' },
-			{ name: '--kelp-800', note: '' },
-			{ name: '--tide-600', note: '' },
-			{ name: '--tide-300', note: '' },
-			{ name: '--granite-600', note: '' },
-			{ name: '--granite-300', note: '' },
-			{ name: '--poppy-700', note: '' },
-			{ name: '--poppy-400', note: '' }
+			'--amber-100',
+			'--amber-200',
+			'--amber-300',
+			'--amber-400',
+			'--amber-500',
+			'--amber-900'
 		]
+	},
+	{
+		family: 'poppy',
+		note: 'the only bright thing',
+		tokens: ['--poppy-300', '--poppy-600', '--poppy-700']
 	}
 ];
 
 export const typeScale: TokenDoc[] = [
 	{ name: '--step-6', note: 'a word on its own page' },
-	{ name: '--step-5', note: 'the opening line' },
-	{ name: '--step-4', note: 'page titles' },
-	{ name: '--step-3', note: '' },
-	{ name: '--step-2', note: 'section headings, headwords' },
-	{ name: '--step-1', note: 'lines of Calenha' },
+	{ name: '--step-5', note: 'the opening line; page titles' },
+	{ name: '--step-4', note: 'Calenha only, in a text' },
+	{ name: '--step-3', note: 'headwords' },
+	{ name: '--step-2', note: 'lines of Calenha' },
+	{ name: '--step-1', note: 'ledes, meanings' },
 	{ name: '--step-0', note: 'body' },
-	{ name: '--step--1', note: 'notes and labels' },
-	{ name: '--step--2', note: 'word-by-word glosses' }
+	{ name: '--step--1', note: 'notes, glosses, labels' }
 ];
 
 export const space: TokenDoc[] = [
@@ -61,13 +89,13 @@ export const space: TokenDoc[] = [
 	{ name: '--space-xs', note: '' },
 	{ name: '--space-s', note: '' },
 	{ name: '--space-m', note: '' },
-	{ name: '--space-l', note: '' },
-	{ name: '--space-xl', note: '' },
+	{ name: '--space-l', note: 'the gap beside the margin column' },
+	{ name: '--space-xl', note: 'between sections' },
 	{ name: '--space-2xl', note: '' }
 ];
 
 export const motion: TokenDoc[] = [
-	{ name: '--duration-breath', note: 'how long a word takes to breathe in' },
+	{ name: '--duration-breath', note: 'how long a word takes to arrive' },
 	{ name: '--stagger-breath', note: 'the pause between words' },
 	{ name: '--duration-quick', note: 'hover and press' },
 	{ name: '--ease-tide', note: 'slow in, slower out' }

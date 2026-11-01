@@ -1,12 +1,13 @@
 <script lang="ts">
 	import Meta from '$components/layout/Meta.svelte';
 	import Interlinear from '$components/language/Interlinear.svelte';
-	import Chip from '$components/ui/Chip.svelte';
 	import PageHeader from '$components/ui/PageHeader.svelte';
 	import SearchField from '$components/ui/SearchField.svelte';
+	import Tabs from '$components/ui/Tabs.svelte';
 	import { featured, read } from '$lib/language';
 
 	const tries = [
+		{ value: featured.text, label: 'the afternoon' },
 		{ value: 'aswen tu velu · solenha.', label: 'if you wander' },
 		{ value: 'lë Miraluma miru.', label: 'the redwood' },
 		{ value: 'venha, venida · acá lar.', label: 'for a guest' },
@@ -14,6 +15,7 @@
 	];
 
 	let line = $state(featured.text);
+	let picked = $state(featured.text);
 
 	const words = $derived(read(line).filter((t) => t.kind === 'word'));
 	const known = $derived(words.filter((t) => t.kind === 'word' && t.entry).length);
@@ -22,49 +24,63 @@
 <Meta title="reader" description="Read any line of Calenha, word by word." />
 
 <PageHeader
-	title="reader"
-	lede="Type a line of Calenha. Each word is read back with its stress and meaning."
+	english="reader"
+	calenha="olhu"
+	lede="Type a line of Calenha, or choose one. Each word is read back with its beat and its meaning."
 />
 
-<div class="tool">
-	<SearchField id="line" label="A line of Calenha" multiline bind:value={line} />
-	<div class="tries" role="group" aria-label="Try a line">
-		{#each tries as t (t.value)}
-			<Chip pressed={line === t.value} onclick={() => (line = t.value)}>{t.label}</Chip>
-		{/each}
+<div class="tool margined">
+	<p class="margin count" aria-live="polite">
+		{#if words.length}{known} of {words.length}
+			{words.length === 1 ? 'word' : 'words'} known{/if}
+	</p>
+	<div class="main fields">
+		<SearchField id="line" label="A line of Calenha" multiline lang="x-calenha" bind:value={line} />
+		<Tabs
+			label="Try a line"
+			options={tries}
+			bind:value={picked}
+			size="small"
+			onchange={(v) => (line = v)}
+		/>
 	</div>
-	<p class="count" aria-live="polite">
-		{#if words.length}{known} of {words.length} {words.length === 1 ? 'word' : 'words'} known{/if}
+</div>
+
+<div class="margined">
+	<div class="main out"><Interlinear text={line} size="large" /></div>
+</div>
+
+<div class="margined">
+	<p class="main note">
+		The breath mark is a middle dot, <code>·</code>. On a Mac it is ⌥⇧9; on a phone, hold the full
+		stop. Words the dictionary does not know yet are underlined with a wave.
 	</p>
 </div>
 
-<div class="out"><Interlinear text={line} size="large" /></div>
-
-<p class="note">
-	The breath mark is typed as a middle dot: <code>·</code>. Words the dictionary does not know yet
-	are shown faintly.
-</p>
-
 <style>
 	.tool {
+		align-items: end;
+	}
+	.fields {
 		display: grid;
 		gap: var(--space-s);
-	}
-	.tries {
-		display: flex;
-		flex-wrap: wrap;
-		gap: var(--space-2xs);
 	}
 	.count {
 		color: var(--color-ink-muted);
 		font-size: var(--step--1);
-		min-height: 1.6em;
+		padding-bottom: 0.6rem;
 	}
 	.out {
-		min-height: 4rem;
-		padding-block: var(--space-m);
+		padding-block: var(--space-xl);
+		min-height: 9rem;
 	}
 	.note {
-		max-width: var(--measure-text);
+		max-width: var(--text-max);
+		color: var(--color-ink-muted);
+	}
+	@media (max-width: 760px) {
+		.count {
+			order: 2;
+		}
 	}
 </style>

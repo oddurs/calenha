@@ -16,8 +16,9 @@
 />
 
 <PageHeader
-	title="phrases"
-	lede="Things to say. Under each line, the words one by one, then what it means."
+	english="phrases"
+	calenha="fala"
+	lede="Things to say. Each line in Calenha, then what it means, then the words one by one."
 />
 
 {#each groups as g (g.topic)}

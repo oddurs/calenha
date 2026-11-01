@@ -8,6 +8,7 @@ mirrored in ``web/src/lib/language/types.ts``; change both together.
 
 from __future__ import annotations
 
+import re
 from datetime import date
 from pathlib import Path
 from typing import Any
@@ -23,7 +24,10 @@ SCHEMA = 1
 
 # documents rendered from Markdown: key → (source, lede)
 DOCS = {
-    "grammar": ("docs/grammar.md", "Very little grammar, and every piece of it means something."),
+    "grammar": (
+        "docs/grammar.md",
+        "Invitations, tide-time, the breath and the bow: how the calm speech works.",
+    ),
     "sounds": ("docs/phonology.md", "How Calenha sounds, and how it is written."),
     "world": ("context/world.md", "Solmara, and the people who speak Calenha there."),
     "principles": ("context/principles.md", "The rules behind the rules. What must never be lost."),
@@ -41,6 +45,24 @@ DOC_LINKS = {
 }
 
 TOPICS = ["greetings", "the hours", "the heart", "land and sea", "sayings"]
+
+_EMPHASIS = re.compile(r"<(strong|em)>(.*?)</\1>", re.S)
+
+
+def tag_calenha(html: str, language: Language) -> str:
+    """Mark emphasised runs that are wholly Calenha with ``lang="x-calenha"``.
+
+    The documents set Calenha examples in bold or italics. Tagging them lets the site
+    give them Calenha's voice, while English emphasis is left as it is.
+    """
+
+    def tag(m: re.Match[str]) -> str:
+        words = words_of(re.sub(r"<[^>]+>", "", m.group(2)).lstrip("*-"))
+        if words and all(language.lookup(w) or w in language.roots for w in words):
+            return f'<{m.group(1)} lang="x-calenha">{m.group(2)}</{m.group(1)}>'
+        return m.group(0)
+
+    return _EMPHASIS.sub(tag, html)
 
 
 def slugs(entries: list[Entry]) -> dict[int, str]:
@@ -166,7 +188,7 @@ def export(language: Language, root: Path, *, built: str | None = None) -> dict[
                 "rule": [[a, b] for a, b in pairs.items()],
                 "when": c.when,
                 "environment": environment(c.when),
-                "note": mdown.inline(c.note),
+                "note": tag_calenha(mdown.inline(c.note), language),
                 "shaped": shaped[c.name],
             }
         )
@@ -182,7 +204,7 @@ def export(language: Language, root: Path, *, built: str | None = None) -> dict[
     docs = {}
     for key, (source, lede) in DOCS.items():
         doc = mdown.render((root / source).read_text(encoding="utf-8"), link=DOC_LINKS.get)
-        docs[key] = {"title": doc.title, "lede": lede, "html": doc.html}
+        docs[key] = {"title": doc.title, "lede": lede, "html": tag_calenha(doc.html, language)}
 
     return {
         "schema": SCHEMA,
@@ -212,7 +234,7 @@ def export(language: Language, root: Path, *, built: str | None = None) -> dict[
                 "title": t.title,
                 "english": t.english,
                 "kind": t.kind,
-                "note": mdown.inline(t.note),
+                "note": tag_calenha(mdown.inline(t.note), language),
                 "lines": [{"text": ln.text, "translation": ln.translation} for ln in t.lines],
             }
             for t in language.texts

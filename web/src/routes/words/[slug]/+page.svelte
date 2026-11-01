@@ -10,11 +10,6 @@
 	let { data } = $props();
 	const e = $derived(data.entry);
 
-	const said = $derived(
-		e.syllables
-			.map((s, i) => (i === e.stress && e.syllables.length > 1 ? s.toUpperCase() : s))
-			.join('·')
-	);
 	const phrases = $derived(
 		e.phrases.map((i) => language.phrases[i]).filter((p) => p !== undefined)
 	);
@@ -23,8 +18,8 @@
 	const facts = $derived(
 		[
 			e.parts.length ? { label: 'made from', body: parts } : null,
-			e.old ? { label: 'history', body: history } : null,
-			e.family.length ? { label: 'family', body: family } : null,
+			e.old ? { label: 'how it came to be', body: history } : null,
+			e.family.length ? { label: 'its family', body: family } : null,
 			phrases.length ? { label: 'in use', body: inUse } : null,
 			texts.length ? { label: 'in texts', body: inTexts } : null
 		].filter((f) => f !== null)
@@ -36,7 +31,7 @@
 {#snippet parts()}
 	<p class="parts">
 		{#each e.parts as part, i (i)}
-			{#if i}<span class="plus">+</span>{/if}
+			{#if i}<span class="plus" aria-hidden="true">+</span>{/if}
 			<span class="part">
 				{#if part.kind === 'root' && part.target}
 					<a href={rootHref(part.target)} lang="x-calenha">{part.form}</a>
@@ -52,16 +47,15 @@
 {/snippet}
 
 {#snippet history()}
-	<p class="chain">
-		<span class="old" lang="x-calenha">*{e.old}</span>
+	<ol class="chain">
+		<li><span class="form old" lang="x-calenha">*{e.old}</span><i>Old Calenha</i></li>
 		{#each e.history as step (step.index)}
-			<span class="to" aria-hidden="true">→</span>
-			<span class="step">
-				<span lang="x-calenha">{step.form}</span>
+			<li>
+				<span class="form" lang="x-calenha">{step.form}</span>
 				<a href={changeHref(step.index)}>{step.change}</a>
-			</span>
+			</li>
 		{/each}
-	</p>
+	</ol>
 {/snippet}
 
 {#snippet family()}
@@ -69,7 +63,7 @@
 {/snippet}
 
 {#snippet inUse()}
-	<PhraseList {phrases} />
+	<PhraseList {phrases} columns={1} />
 {/snippet}
 
 {#snippet inTexts()}
@@ -81,124 +75,185 @@
 {/snippet}
 
 <article>
-	<header class="word-head">
-		<h1><Word shape={e} /></h1>
-		<p class="say">
-			<span class="syllables" lang="x-calenha">{said}</span>
-			<span class="ipa">/{e.ipa}/</span>
-		</p>
-		<p class="meaning">{e.gloss} <span class="pos">{e.label}</span></p>
-		{#if e.sense}<p class="sense">{e.sense}</p>{/if}
+	<header class="word-head margined">
+		<p class="margin pos">{e.label}</p>
+		<div class="main">
+			<h1><Word shape={e} /></h1>
+			<p class="say">
+				{#each e.syllables as s, i (i)}{#if i}<span class="dot">·</span>{/if}<span
+						lang="x-calenha"
+						class:stressed={i === e.stress && e.syllables.length > 1}>{s}</span
+					>{/each}
+				<span class="ipa">/{e.ipa}/</span>
+			</p>
+			<p class="meaning">{e.gloss}</p>
+			{#if e.sense}<p class="sense">{e.sense}</p>{/if}
+		</div>
 	</header>
 
 	<Facts {facts} />
 
-	<nav class="pager" aria-label="Neighbouring words">
-		{#if data.before}
-			<a href={wordHref(data.before.slug)} rel="prev">← {data.before.word}</a>
-		{:else}<span></span>{/if}
-		{#if data.after}
-			<a href={wordHref(data.after.slug)} rel="next">{data.after.word} →</a>
-		{/if}
+	<nav class="pager margined" aria-label="Neighbouring words">
+		<div class="main row">
+			{#if data.before}
+				<a href={wordHref(data.before.slug)} rel="prev"
+					><span class="dir" lang="x-calenha">antes</span>
+					<span lang="x-calenha">{data.before.word}</span></a
+				>
+			{:else}<span></span>{/if}
+			{#if data.after}
+				<a href={wordHref(data.after.slug)} rel="next" class="next"
+					><span class="dir" lang="x-calenha">depois</span>
+					<span lang="x-calenha">{data.after.word}</span></a
+				>
+			{/if}
+		</div>
 	</nav>
 </article>
 
 <style>
 	.word-head {
+		padding-block: var(--space-xl) var(--space-l);
+	}
+	.pos {
+		color: var(--color-ink-muted);
+		font-style: italic;
+		padding-top: 1.1rem;
+	}
+	.main {
 		display: grid;
 		gap: var(--space-2xs);
-		padding-block: var(--space-xl) var(--space-xs);
 	}
 	h1 {
 		font-size: var(--step-6);
-		line-height: 1.1;
+		line-height: 1;
 		letter-spacing: -0.015em;
-		--stress-offset: 0.1em;
+		padding-top: 0.12em;
 	}
 	.say {
 		display: flex;
 		flex-wrap: wrap;
-		gap: var(--space-3xs) var(--space-m);
 		align-items: baseline;
-	}
-	.syllables {
+		gap: 0 0.1em;
 		font-size: var(--step-1);
-		letter-spacing: 0.04em;
+		color: var(--color-ink-muted);
 	}
-	.ipa {
+	.stressed {
+		color: var(--color-ink);
+		text-decoration: overline;
+		text-decoration-color: var(--color-beat);
+		text-decoration-thickness: 2px;
+	}
+	.dot {
+		padding-inline: 0.12em;
+	}
+	.say .ipa {
+		margin-left: var(--space-m);
 		color: var(--color-accent);
 		font-size: var(--step-0);
 	}
 	.meaning {
-		font-size: var(--step-2);
-		line-height: var(--leading-snug);
-		padding-top: var(--space-xs);
-	}
-	.pos {
-		font-style: italic;
-		color: var(--color-ink-muted);
-		font-size: var(--step-0);
+		font-size: var(--step-3);
+		line-height: var(--leading-tight);
+		font-weight: 500;
+		padding-top: var(--space-s);
 	}
 	.sense {
-		font-style: italic;
 		font-size: var(--step-1);
-		max-width: 32em;
+		line-height: 1.45;
+		font-style: italic;
+		max-width: 30em;
+		color: var(--color-ink-muted);
 	}
 	.parts {
 		display: flex;
 		flex-wrap: wrap;
-		gap: var(--space-2xs) var(--space-s);
+		gap: var(--space-2xs) var(--space-m);
 		align-items: baseline;
 	}
 	.part {
 		display: inline-grid;
-		font-size: var(--step-1);
 	}
-	.part i {
+	.part [lang] {
+		font-size: var(--step-2);
+		line-height: var(--leading-tight);
+	}
+	.part i,
+	.chain i,
+	.texts i {
 		color: var(--color-ink-muted);
 		font-size: var(--step--1);
 	}
-	.plus,
-	.to {
+	.plus {
 		color: var(--color-ink-muted);
+		font-size: var(--step-1);
 	}
 	.chain {
+		list-style: none;
+		padding: 0;
 		display: flex;
 		flex-wrap: wrap;
-		gap: var(--space-3xs) var(--space-xs);
-		align-items: baseline;
+		gap: var(--space-xs) 0;
+	}
+	.chain li {
+		display: inline-grid;
+		padding-right: var(--space-m);
+	}
+	.chain li + li {
+		padding-left: var(--space-m);
+		border-left: var(--rule);
+	}
+	.form {
+		font-size: var(--step-2);
+		line-height: var(--leading-tight);
 	}
 	.old {
 		color: var(--color-ink-muted);
-		font-size: var(--step-1);
 	}
-	.step {
-		display: inline-grid;
-		font-size: var(--step-1);
-	}
-	.step a {
+	.chain a {
 		font-size: var(--step--1);
 		color: var(--color-ink-muted);
 	}
 	.texts {
 		list-style: none;
 		padding: 0;
+		display: grid;
+		gap: var(--space-3xs);
 	}
-	.texts i {
-		color: var(--color-ink-muted);
-		font-size: var(--step--1);
+	.texts a {
+		font-size: var(--step-1);
 	}
 	.pager {
+		padding-top: var(--space-l);
+		border-top: var(--rule);
+	}
+	.row {
 		display: flex;
 		justify-content: space-between;
 		gap: var(--space-m);
-		padding-top: var(--space-l);
 	}
 	.pager a {
+		display: grid;
 		text-decoration: none;
+		font-size: var(--step-2);
+		line-height: var(--leading-tight);
+	}
+	.pager a:hover [lang]:not(.dir) {
+		color: var(--color-accent);
+	}
+	.next {
+		text-align: right;
+	}
+	.dir {
+		font-size: var(--step--1);
 		color: var(--color-ink-muted);
 	}
-	.pager a:hover {
-		color: var(--color-ink);
+	@media (max-width: 760px) {
+		.word-head {
+			padding-top: var(--space-l);
+		}
+		.pos {
+			padding-top: 0;
+		}
 	}
 </style>

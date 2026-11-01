@@ -3,7 +3,7 @@ import json
 import pytest
 
 from calenha.cli import main
-from calenha.export import environment, export
+from calenha.export import environment, export, tag_calenha
 from calenha.language import Language
 from calenha.mdown import inline, render
 
@@ -108,3 +108,15 @@ def test_markdown_blocks():
     assert "<blockquote><p>a</p><p>b</p></blockquote>" in doc.html
     assert "<td>1</td><td>2</td>" in doc.html
     assert "<ul><li>one</li><li>two</li></ul>" in doc.html
+
+
+def test_calenha_in_documents_is_tagged(lang_path):
+    language = Language.load(lang_path)
+    html = "<p><strong>lë altavel velu.</strong> the condor <em>wanders</em>, <em>*kalenia</em></p>"
+    tagged = tag_calenha(html, language)
+    assert '<strong lang="x-calenha">lë altavel velu.</strong>' in tagged
+    assert "<em>wanders</em>" in tagged
+
+
+def test_grammar_examples_are_tagged(data):
+    assert 'lang="x-calenha">velu' in data["docs"]["grammar"]["html"]

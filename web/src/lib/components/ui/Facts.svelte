@@ -1,53 +1,34 @@
 <!--
   @component
-  A list of labelled facts, each on its own hairline row.
-  Pass `facts` as label/snippet pairs; empty ones are skipped by the caller.
+  Labelled facts, each on its own row: the label in the margin, the fact beside it.
 -->
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 
-	interface Props {
-		facts: { label: string; body: Snippet }[];
-	}
-
-	let { facts }: Props = $props();
+	let { facts }: { facts: { label: string; body: Snippet }[] } = $props();
 </script>
 
 <dl class="facts">
 	{#each facts as fact (fact.label)}
-		<div class="fact">
-			<dt>{fact.label}</dt>
-			<dd>{@render fact.body()}</dd>
+		<div class="fact margined">
+			<dt class="margin">{fact.label}</dt>
+			<dd class="main">{@render fact.body()}</dd>
 		</div>
 	{/each}
 </dl>
 
 <style>
-	.facts {
-		margin: var(--space-l) 0 0;
-		border-top: var(--rule);
-	}
 	.fact {
-		display: grid;
-		grid-template-columns: minmax(0, 9rem) minmax(0, 1fr);
-		gap: var(--space-3xs) var(--space-m);
-		padding-block: var(--space-s);
-		border-bottom: var(--rule);
+		padding-block: var(--space-m);
+		border-top: var(--rule);
+		row-gap: var(--space-2xs);
 	}
 	dt {
 		color: var(--color-ink-muted);
-		font-size: var(--step--1);
-		padding-top: 0.25rem;
+		padding-top: 0.2rem;
 	}
 	dd {
-		margin: 0;
-		min-width: 0;
 		display: grid;
-		gap: var(--space-2xs);
-	}
-	@media (max-width: 560px) {
-		.fact {
-			grid-template-columns: minmax(0, 1fr);
-		}
+		gap: var(--space-xs);
 	}
 </style>
