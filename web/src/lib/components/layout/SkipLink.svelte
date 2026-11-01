@@ -3,7 +3,7 @@
 <style>
 	.skip {
 		position: absolute;
-		left: var(--gutter);
+		left: var(--gutter-start);
 		top: -3rem;
 		background: var(--color-inverse-page);
 		color: var(--color-inverse-ink);

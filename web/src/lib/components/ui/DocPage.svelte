@@ -8,9 +8,15 @@
 	import PageHeader from './PageHeader.svelte';
 	import Prose from './Prose.svelte';
 
-	let { doc }: { doc: Doc } = $props();
+	interface Props {
+		doc: Doc;
+		english: string;
+		calenha: string;
+	}
+
+	let { doc, english, calenha }: Props = $props();
 </script>
 
-<Meta title={doc.title} description={doc.lede} />
-<PageHeader title={doc.title} lede={doc.lede} />
+<Meta title={english} description={doc.lede} />
+<PageHeader {english} {calenha} lede={doc.lede} />
 <Prose html={doc.html} />

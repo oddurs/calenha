@@ -1,33 +1,32 @@
 <!--
   @component
-  The name of the language and the ways into it.
+  The name of the language and its four sections. The wordmark is the word itself,
+  with its beat — the identity is the language's own stress.
 -->
 <script lang="ts">
-	import { resolve } from '$app/paths';
+	import { base, resolve } from '$app/paths';
 	import { page } from '$app/state';
+	import Word from '$components/language/Word.svelte';
+	import { lookup } from '$lib/language';
+	import { href, sectionOf, sections } from '$lib/sections';
 
-	const nav = [
-		{ label: 'words', href: resolve('/words') },
-		{ label: 'roots', href: resolve('/roots') },
-		{ label: 'grammar', href: resolve('/grammar') },
-		{ label: 'sounds', href: resolve('/sounds') },
-		{ label: 'phrases', href: resolve('/phrases') },
-		{ label: 'texts', href: resolve('/texts') },
-		{ label: 'reader', href: resolve('/reader') },
-		{ label: 'history', href: resolve('/history') },
-		{ label: 'world', href: resolve('/world') }
-	];
+	let { tone = 'page' }: { tone?: 'page' | 'sky' } = $props();
 
-	const here = (href: string) =>
-		page.url.pathname === href || page.url.pathname.startsWith(`${href}/`);
+	const name = lookup('calenha');
+	const current = $derived(sectionOf(page.url.pathname, base));
 </script>
 
-<header class="top">
-	<div class="wrap row">
-		<a class="home" href={resolve('/')}>calenha</a>
-		<nav aria-label="Sections">
-			{#each nav as item (item.href)}
-				<a href={item.href} aria-current={here(item.href) ? 'page' : undefined}>{item.label}</a>
+<header class="top {tone}">
+	<div class="frame margined row">
+		<a class="margin wordmark" href={resolve('/')} aria-label="Calenha, home">
+			{#if name}<Word shape={name} />{/if}
+		</a>
+		<nav class="main" aria-label="Sections">
+			{#each sections as section (section.english)}
+				<a
+					href={href(section.pages[0]?.path ?? '/')}
+					aria-current={current === section ? 'true' : undefined}>{section.english}</a
+				>
 			{/each}
 		</nav>
 	</div>
@@ -35,37 +34,52 @@
 
 <style>
 	.top {
-		padding-block: var(--space-m);
+		padding-block: var(--space-m) var(--space-s);
+	}
+	.sky {
+		background: var(--horizon-sky);
+		color: var(--color-on-sky);
 	}
 	.row {
-		display: flex;
-		flex-wrap: wrap;
 		align-items: baseline;
-		justify-content: space-between;
-		gap: var(--space-2xs) var(--space-m);
+		row-gap: var(--space-2xs);
 	}
-	.home {
-		font-weight: 700;
-		color: var(--color-accent);
+	.wordmark {
+		font-size: 1.65rem;
+		line-height: 1;
 		text-decoration: none;
-		font-size: 1.2rem;
+		justify-self: start;
 	}
 	nav {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 0.15rem 1.1rem;
-		font-size: 1rem;
+		gap: var(--space-3xs) var(--space-l);
 	}
 	nav a {
-		color: var(--color-ink-muted);
-		text-decoration: none;
-	}
-	nav a:hover,
-	nav a[aria-current='page'] {
-		color: var(--color-ink);
-	}
-	nav a[aria-current='page'] {
+		font-size: var(--step-0);
+		font-weight: 500;
 		text-decoration: underline;
+		text-decoration-color: transparent;
+		text-decoration-thickness: 2px;
+		text-underline-offset: 0.4em;
+		opacity: 0.78;
+		transition:
+			opacity var(--duration-quick) var(--ease-tide),
+			text-decoration-color var(--duration-quick) var(--ease-tide);
+	}
+	nav a:hover {
+		opacity: 1;
+	}
+	nav a[aria-current] {
+		opacity: 1;
 		text-decoration-color: var(--color-accent);
+	}
+	.sky nav a[aria-current] {
+		text-decoration-color: currentColor;
+	}
+	@media (max-width: 760px) {
+		nav {
+			gap: var(--space-3xs) var(--space-m);
+		}
 	}
 </style>

@@ -1,6 +1,6 @@
 <!--
   @component
-  A run of words, each linked, each with its meaning in small italics.
+  A run of words, each linked, each with its meaning beside it.
 -->
 <script lang="ts">
 	import { entry } from '$lib/language';
@@ -15,10 +15,12 @@
 	const words = $derived(slugs.map(entry).filter((e) => e !== undefined));
 </script>
 
-<ul class="words">
+<ul class="words" class:bare={!gloss}>
 	{#each words as w (w.slug)}
 		<li>
-			<a href={wordHref(w.slug)} lang="x-calenha">{w.word}</a>{#if gloss}{' '}<i>{w.short}</i>{/if}
+			<a href={wordHref(w.slug)} lang="x-calenha">{w.word}</a>{#if gloss}<span class="g"
+					>{w.short}</span
+				>{/if}
 		</li>
 	{/each}
 </ul>
@@ -29,10 +31,27 @@
 		padding: 0;
 		display: flex;
 		flex-wrap: wrap;
-		gap: var(--space-3xs) var(--space-m);
+		gap: var(--space-2xs) var(--space-m);
 	}
-	i {
+	.bare {
+		gap: var(--space-3xs) var(--space-s);
+	}
+	li {
+		display: inline-flex;
+		align-items: baseline;
+		gap: 0.4em;
+	}
+	a {
+		font-size: 1.12em;
+		text-decoration: none;
+	}
+	a:hover {
+		text-decoration: underline;
+		text-decoration-color: var(--color-accent);
+	}
+	.g {
 		color: var(--color-ink-muted);
 		font-size: var(--step--1);
+		font-style: italic;
 	}
 </style>

@@ -12,6 +12,6 @@
 </script>
 
 <svelte:head>
-	<title>{title ? `${title} — calenha` : 'Calenha'}</title>
+	<title>{title ? `${title} – Calenha` : 'Calenha'}</title>
 	<meta name="description" content={description} />
 </svelte:head>
