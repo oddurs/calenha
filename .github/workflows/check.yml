@@ -22,9 +22,32 @@ jobs:
         run: uv run calenha check
       - name: tests
         run: uv run pytest
-      - name: build the dictionary
-        run: uv run calenha build
-      - uses: actions/upload-artifact@v4
+
+  web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
         with:
-          name: dictionary
-          path: dist/
+          python-version: "3.12"
+      - run: uv sync --locked
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: web/.nvmrc
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - name: install
+        working-directory: web
+        run: npm ci
+      - name: export the language
+        working-directory: web
+        run: npm run data
+      - name: lint, type-check, test
+        working-directory: web
+        run: |
+          npm run lint
+          npm run check
+          npm test
+      - name: build every page
+        working-directory: web
+        run: npm run build
